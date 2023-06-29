@@ -5,8 +5,6 @@ import java.sql.Timestamp;
 public class Category extends AbstractModel{
 	private int category_id;
 	private String categoryName;
-
-	
 	
 	public Category() {
 
@@ -17,6 +15,7 @@ public class Category extends AbstractModel{
 		this.category_id = category_id;
 		this.categoryName = categoryName;
 	}
+
 
 	public Category(Timestamp updateAt, String updateBy, Timestamp createAt, String createBy, int category_id,
 			String categoryName) {
@@ -35,6 +34,11 @@ public class Category extends AbstractModel{
 	}
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [category_id=" + category_id + ", categoryName=" + categoryName + "] \n";
 	}
 	
 }

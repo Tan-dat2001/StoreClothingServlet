@@ -42,5 +42,10 @@ public class PaymentMethod  extends AbstractModel{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	@Override
+	public String toString() {
+		return "PaymentMethod [payment_id=" + payment_id + ", paymentName=" + paymentName + ", status=" + status + "] \n";
+	}
+	
 	
 }

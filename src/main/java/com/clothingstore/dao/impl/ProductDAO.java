@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +12,13 @@ import java.util.List;
 import com.clothingstore.dao.IProductDAO;
 import com.clothingstore.model.Product;
 import com.mysql.cj.protocol.Resultset;
-
+//DONE
 public class ProductDAO extends AbstractDAO implements IProductDAO {
 
 	@Override
 	public List<Product> getAllProduct() {
 		List<Product> results = new ArrayList<>();
+		Product product = null;
 		String sql = "select * from product";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
@@ -38,11 +40,12 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 					String status = resultSet.getString("status");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
-					Product product = new Product(updateAt, updateBy, createAt, createBy, product_id, category_id,
+					product = new Product(updateAt, updateBy, createAt, createBy, product_id, category_id,
 							discount_id, product_name, product_desc, product_price, product_image, purchases, quantity,
 							status);
+					results.add(product);
 				}
 				return results;
 			} catch (SQLException e) {
@@ -90,7 +93,7 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 					String status = resultSet.getString("status");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 					product = new Product(updateAt, updateBy, createAt, createBy, id, category_id, discount_id,
 							product_name, product_desc, product_price, product_image, purchases, quantity, status);
@@ -141,7 +144,7 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 					String status = resultSet.getString("status");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 					Product product = new Product(updateAt, updateBy, createAt, createBy, product_id, categoryId,
 							discount_id, product_name, product_desc, product_price, product_image, purchases, quantity,
@@ -175,13 +178,13 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 	public void createProduct(Product product) {
 		// Bc product_id is auto_increment so we don't need to insert product_id in
 		// query sentence.
-		String sql = "insert into product(category_id, discount_id, product_name, product_desc, product_price, product_image, purchases, quantity, status)"
-				+ " values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into product(category_id, discount_id, product_name, product_desc, product_price, product_image, purchases, quantity)"
+				+ " values(?, ?, ?, ?, ?, ?, ?, ?)";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		if (connection != null) {
 			try {
-				statement = connection.prepareStatement(sql);
+				statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				statement.setInt(1, product.getCategory_id());
 				statement.setInt(2, product.getDiscount_id());
 				statement.setString(3, product.getProductName());
@@ -190,7 +193,6 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 				statement.setString(6, product.getProductImage());
 				statement.setInt(7, product.getPurchases());
 				statement.setInt(8, product.getQuantity());
-				statement.setString(9, product.getStatus());
 				statement.executeUpdate(); // Thực thi câu query
 
 				// Lấy giá trị product_id được tự động tạo/tăng
@@ -358,7 +360,7 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 					String status = resultSet.getString("status");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 					Product product = new Product(updateAt, updateBy, createAt, createBy, product_id, category_id,
 							discount_id, product_name, product_desc, product_price, product_image, purchases, quantity,
@@ -387,5 +389,26 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 
 		return null;
 	}
-
+	public static void main(String[] args) {
+		ProductDAO productDAO = new ProductDAO();
+		Product product = new Product();
+		product.setCategory_id(1);
+		product.setDiscount_id(1);
+		product.setProductName("Áo sơ mi Torano");
+		product.setProductDesc("Co giãn tốt, chất liệu vải thiên nhiên");
+		product.setProductPrice(5555000);
+		product.setProductImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ2PrKjcquzshqyA5UrJOpc-RelJUchBPxeIOiuqk&s");
+		product.setPurchases(25);
+		product.setQuantity(250);
+		product.setStatus("enabled");
+		product.setProduct_id(54);
+//		productDAO.createProduct(product);
+//		System.out.println(productDAO.getAllProduct().toString());
+//		System.out.println(productDAO.getProductById(1));
+//		System.out.println(productDAO.getProductByCategoryId(2));
+//		System.out.println(productDAO.getProductByPriceRange(500000, 1000000));
+//		productDAO.updateProduct(product);
+//		productDAO.deleteProduct(53);
+		System.out.println(productDAO.searchProduct("ao"));
+	}
 }

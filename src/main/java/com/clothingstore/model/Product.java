@@ -106,6 +106,14 @@ public class Product extends AbstractModel{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "Product [product_id=" + product_id + ", category_id=" + category_id + ", discount_id=" + discount_id
+				+ ", productName=" + productName + ", productDesc=" + productDesc + ", productPrice=" + productPrice
+				+ ", productImage=" + productImage + ", purchases=" + purchases + ", quantity=" + quantity + ", status="
+				+ status + "] \n";
+	}
 	
 	
 }

@@ -4,13 +4,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.clothingstore.dao.ICategoryDAO;
 import com.clothingstore.model.Category;
-
+//DONE
 public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 
 	@Override
@@ -30,7 +31,7 @@ public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 					String category_name = resultSet.getString("category_name");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 					
 					Category category = new Category(updateAt, updateBy, createAt, createBy, category_id, category_name);
@@ -74,7 +75,7 @@ public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 					String categoryName = resultSet.getString("category_name");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 					category  = new Category(updateAt, updateBy, createAt, createBy, categoryId, categoryName);
 					
@@ -103,13 +104,13 @@ public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 
 	@Override
 	public void createCategory(Category category) {
-		String sql = "insert into category(category_name)";
+		String sql = "insert into category(category_name) values(?)";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet generatedKeys = null;
 		if(connection != null) {
 			try {
-				statement = connection.prepareStatement(sql);
+				statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				statement.setString(1, category.getCategoryName());
 				statement.executeUpdate();
 				
@@ -183,5 +184,17 @@ public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 		}
 		
 	}
+	
+	public static void main(String[] args) {
+		Category category = new Category();
+		CategoryDAO categoryDAO = new CategoryDAO();
+		category.setCategoryName("áo 200 lỗ");
+		category.setCategory_id(10);
+//		categoryDAO.updateCategory(category);
+//		categoryDAO.createCategory(category);
+//		categoryDAO.deleteCategory(9);
+//		System.out.println(categoryDAO.getAllCategory());
+//		System.out.println(categoryDAO.getOneCategoryById(2));
 
+	}
 }

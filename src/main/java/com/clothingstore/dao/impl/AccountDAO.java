@@ -39,7 +39,7 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 					Date dateOfBirth = resultSet.getDate("dateofbirth");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 
 					account = new Account(updateAt, updateBy, createAt, createBy, accountId, email, password, name,
@@ -92,13 +92,13 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 					Date dateOfBirth = resultSet.getDate("dateofbirth");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 
 					account = new Account(updateAt, updateBy, createAt, createBy, accountId, email, password, name,
 							role, status, gender, address, phone, dateOfBirth);
+					return account;
 				}
-				return account;
 			} catch (SQLException e) {
 				// TODO: handle exception
 				return null;
@@ -145,7 +145,7 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 					Date dateOfBirth = resultSet.getDate("dateofbirth");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 
 					account = new Account(updateAt, updateBy, createAt, createBy, accountId, email, password, name,
@@ -198,7 +198,7 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 					Date dateOfBirth = resultSet.getDate("dateofbirth");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 					
 					account = new Account(updateAt, updateBy, createAt, createBy, accountId, email, password, name, role, isActive, gender, address, phone, dateOfBirth);
@@ -229,19 +229,90 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 
 	@Override
 	public void createAccount(Account account) {
-		String sql = "insert into account(email,password,name,gender,address,phone) values(?,?,?,?,?,?)";
+		String sql = "insert into account(email,password,name) values(?,?,?)";
+		
 	}
 
 	@Override
 	public void updateAccount(Account account) {
-		// TODO Auto-generated method stub
+		String sql = "update account set email=?, password=?, name=?, gender=?, address=?, phone=?, dateofbirth=? where account_id=? ";
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		if(connection != null) {
+			try {
+				statement = connection.prepareStatement(sql);
+				statement.setString(1, account.getEmail());
+				statement.setString(2, account.getPassword());
+				statement.setString(3, account.getName());
+				statement.setString(4, account.getGender());
+				statement.setString(5, account.getAddress());
+				statement.setString(6, account.getPhone());
+				statement.setDate(7, account.getDateOfBirth());
+				statement.setInt(8, account.getAccount_id());
+				statement.executeUpdate();
+			} catch (SQLException e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			} finally {
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
 	@Override
 	public void deleteAccount(int accountId) {
-		// TODO Auto-generated method stub
+		String sql = "delete from account where account_id = ?";
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		if(connection!=null) {
+			try {
+				statement = connection.prepareStatement(sql);
+				statement.setInt(1, accountId);
+				statement.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 	}
 
-	
+//	@SuppressWarnings("deprecation")
+//  Test - chưa test createAccount
+	public static void main(String[] args) {
+		AccountDAO accountDAO = new AccountDAO();
+		Account newAccount = new Account();
+		newAccount.setAccount_id(6);
+		newAccount.setEmail("bigboss@gmail.com");
+		newAccount.setPassword("123456789");
+		newAccount.setName("Bui Van Quyen");
+		newAccount.setGender("nam");
+		newAccount.setAddress("DUY NGHIA, DUY XUYEN");
+		newAccount.setPhone("0901212345");
+		newAccount.setDateOfBirth(new Date(2001-1900, 12, 23));
+//		accountDAO.updateAccount(newAccount);
+//		accountDAO.deleteAccount(4);
+//		System.out.println(accountDAO.getAccountById(1).toString());
+//		System.out.println(accountDAO.getAllAccount());
+//		System.out.println(accountDAO.getAccountByEmail("bigboss@gmail.com"));
+	}
 
 }

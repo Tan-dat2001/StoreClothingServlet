@@ -128,5 +128,13 @@ public class Account extends AbstractModel{
 
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+
+	@Override
+	public String toString() {
+		return "Account [account_id=" + account_id + ", email=" + email + ", password=" + password + ", name=" + name
+				+ ", role=" + role + ", status=" + status + ", gender=" + gender + ", address=" + address + ", phone="
+				+ phone + ", dateOfBirth=" + dateOfBirth + "] \n";
 	}	
+	
 }

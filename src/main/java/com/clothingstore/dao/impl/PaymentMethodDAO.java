@@ -4,13 +4,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.clothingstore.dao.IPaymentMethod;
+import com.clothingstore.model.Category;
 import com.clothingstore.model.PaymentMethod;
-
+//DONE
 public class PaymentMethodDAO extends AbstractDAO implements IPaymentMethod{
 
 	@Override
@@ -31,7 +33,7 @@ public class PaymentMethodDAO extends AbstractDAO implements IPaymentMethod{
 					String status = resultSet.getString("status");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 					paymentMethod = new PaymentMethod(updateAt, updateBy, createAt, createBy, paymentId, paymentName, status);
 					results.add(paymentMethod);
@@ -75,7 +77,7 @@ public class PaymentMethodDAO extends AbstractDAO implements IPaymentMethod{
 					String status = resultSet.getString("status");
 					Timestamp createAt = resultSet.getTimestamp("create_at");
 					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
 					paymentMethod = new PaymentMethod(updateAt, updateBy, createAt, createBy, paymentId, paymentName, status);
 					
@@ -111,7 +113,7 @@ public class PaymentMethodDAO extends AbstractDAO implements IPaymentMethod{
 		ResultSet resultSet = null;
 		if(connection != null) {
 			try {
-				statement = connection.prepareStatement(sql);
+				statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				statement.setString(1, paymentMethod.getPaymentName());
 				statement.setString(2, paymentMethod.getStatus());
 				statement.executeUpdate();
@@ -199,4 +201,16 @@ public class PaymentMethodDAO extends AbstractDAO implements IPaymentMethod{
 		
 	}
 
+	public static void main(String[] args) {
+		PaymentMethod paymentMethod = new PaymentMethod();
+		PaymentMethodDAO paymentMethodDAO = new PaymentMethodDAO();
+		paymentMethod.setPaymentName("COD");
+		paymentMethod.setStatus("enabled");
+		paymentMethod.setPayment_id(6);
+//		paymentMethodDAO.createPaymentMethod(paymentMethod);
+//		paymentMethodDAO.updatePaymentMethod(paymentMethod);
+//		paymentMethodDAO.deletePaymentMethod(6);
+//		System.out.println(paymentMethodDAO.getAllPaymentMethod());
+//		System.out.println(paymentMethodDAO.getOnePaymentMethodById(2));
+	}
 }
