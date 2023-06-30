@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 public class DeliveryMethod extends AbstractModel{
 	private int delivery_id;
 	private String deliveryName;
-	private String deliveryPrice;
+	private float deliveryPrice;
 	private String status;
 	
 	public DeliveryMethod() {
@@ -13,7 +13,7 @@ public class DeliveryMethod extends AbstractModel{
 	}
 	
 	
-	public DeliveryMethod(int delivery_id, String deliveryName, String deliveryPrice, String status) {
+	public DeliveryMethod(int delivery_id, String deliveryName, float deliveryPrice, String status) {
 		this.delivery_id = delivery_id;
 		this.deliveryName = deliveryName;
 		this.deliveryPrice = deliveryPrice;
@@ -22,7 +22,7 @@ public class DeliveryMethod extends AbstractModel{
 
 
 	public DeliveryMethod(Timestamp updateAt, String updateBy, Timestamp createAt, String createBy, int delivery_id,
-			String deliveryName, String deliveryPrice, String status) {
+			String deliveryName, float deliveryPrice, String status) {
 		super(updateAt, updateBy, createAt, createBy);
 		this.delivery_id = delivery_id;
 		this.deliveryName = deliveryName;
@@ -43,10 +43,10 @@ public class DeliveryMethod extends AbstractModel{
 	public void setDeliveryName(String deliveryName) {
 		this.deliveryName = deliveryName;
 	}
-	public String getDeliveryPrice() {
+	public float getDeliveryPrice() {
 		return deliveryPrice;
 	}
-	public void setDeliveryPrice(String deliveryPrice) {
+	public void setDeliveryPrice(float deliveryPrice) {
 		this.deliveryPrice = deliveryPrice;
 	}
 	public String getStatus() {
@@ -54,6 +54,13 @@ public class DeliveryMethod extends AbstractModel{
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+
+	@Override
+	public String toString() {
+		return "DeliveryMethod [delivery_id=" + delivery_id + ", deliveryName=" + deliveryName + ", deliveryPrice="
+				+ deliveryPrice + ", status=" + status + "] \n";
 	}
 
 	

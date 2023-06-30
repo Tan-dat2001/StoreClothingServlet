@@ -45,8 +45,8 @@
                     </div>
                     <div class="our-link">
                         <ul>
+                            <li><a href="#">Trang chủ</a></li>
                             <li><a href="login.html">Đăng nhập</a></li>
-                            <li><a href="register.html">Đăng ký</a></li>
 
                         </ul>
                     </div>
@@ -66,7 +66,7 @@
                         aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <a class="navbar-brand" href="index.html"><img src="images/Logo.png" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="index.html"><img src="<c:url value='/template/web/images/logo.png'/>" class="logo" alt=""></a>
                 </div>
                 <!-- End Header Navigation -->
 
@@ -96,7 +96,10 @@
                         </li>
                         <li class="nav-item"><a class="nav-link" href="about.html">Cửa hàng</a></li>
                         <li class="dropdown">
-                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Tài khoản</a>
+                            <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
+                            Tài khoản
+                            <i class="fa-solid fa-user" style="padding-left: 4px;"></i>
+                            </a>
                             <ul class="dropdown-menu">
                                 <li><a href="my-account.html">Thông tin tài khoản</a></li>
                                 <li><a href="cart.html">Giỏ hàng</a></li>
@@ -133,4 +136,4 @@
         </nav>
         <!-- End Navigation -->
     </header>
-    <!-- End Main Top -->
+<!-- End Main Top -->

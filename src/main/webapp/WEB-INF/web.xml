@@ -20,42 +20,12 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>HomeController</display-name>
-    <servlet-name>HomeController</servlet-name>
-    <servlet-class>com.clothingstore.controller.admin.HomeController</servlet-class>
+    <display-name>LoginController</display-name>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>com.clothingstore.controller.web.LoginController</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>HomeController</servlet-name>
-    <url-pattern>/HomeController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>WebHomeController</display-name>
-    <servlet-name>WebHomeController</servlet-name>
-    <servlet-class>com.clothingstore.controller.web.WebHomeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>WebHomeController</servlet-name>
-    <url-pattern>/WebHomeController</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>AdminHomeController</display-name>
-    <servlet-name>AdminHomeController</servlet-name>
-    <servlet-class>com.clothingstore.controller.admin.AdminHomeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>AdminHomeController</servlet-name>
-    <url-pattern>/admin-home</url-pattern>
-  </servlet-mapping>
-  <servlet>
-    <description></description>
-    <display-name>homeController</display-name>
-    <servlet-name>homeController</servlet-name>
-    <servlet-class>com.clothingstore.controller.web.HomeController</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>homeController</servlet-name>
-    <url-pattern>/homeController</url-pattern>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/dang-nhap</url-pattern>
   </servlet-mapping>
 </web-app>

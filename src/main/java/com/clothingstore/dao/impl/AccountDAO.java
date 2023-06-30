@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
@@ -229,7 +230,42 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 
 	@Override
 	public void createAccount(Account account) {
-		String sql = "insert into account(email,password,name) values(?,?,?)";
+		String sql = "insert into account(email,password,name,gender) values(?,?,?,?)";
+		Connection  connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		if(connection != null) {
+			try {
+				statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+				statement.setString(1, account.getEmail());
+				statement.setString(2, account.getPassword());
+				statement.setString(3, account.getName());
+				statement.setString(4, account.getGender());
+				statement.executeUpdate();
+				
+				resultSet = statement.getGeneratedKeys();
+				if(resultSet.next()) {
+					int accountId = resultSet.getInt(1);
+					account.setAccount_id(accountId);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+					if (resultSet != null) {
+						resultSet.close();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		
 	}
 
@@ -300,19 +336,20 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 	public static void main(String[] args) {
 		AccountDAO accountDAO = new AccountDAO();
 		Account newAccount = new Account();
-		newAccount.setAccount_id(6);
-		newAccount.setEmail("bigboss@gmail.com");
-		newAccount.setPassword("123456789");
-		newAccount.setName("Bui Van Quyen");
+		newAccount.setAccount_id(8);
+		newAccount.setEmail("ntd123@gmail.com");
+		newAccount.setPassword("000000");
+		newAccount.setName("nguyen tan dat");
 		newAccount.setGender("nam");
-		newAccount.setAddress("DUY NGHIA, DUY XUYEN");
-		newAccount.setPhone("0901212345");
-		newAccount.setDateOfBirth(new Date(2001-1900, 12, 23));
+		newAccount.setAddress("DUY NGHIA, DUY XUYEN, QUANG NAM");
+		newAccount.setPhone("0954545555");
+		newAccount.setDateOfBirth(new Date(2001-1900, 3, 13));
 //		accountDAO.updateAccount(newAccount);
 //		accountDAO.deleteAccount(4);
 //		System.out.println(accountDAO.getAccountById(1).toString());
 //		System.out.println(accountDAO.getAllAccount());
 //		System.out.println(accountDAO.getAccountByEmail("bigboss@gmail.com"));
+		accountDAO.updateAccount(newAccount);
 	}
 
 }

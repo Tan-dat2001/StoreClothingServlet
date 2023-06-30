@@ -11,7 +11,7 @@
     <!-- Site Icons -->
     <link rel="shortcut icon" href="<c:url value='/template/web/images/favicon.ico'/>" type="image/x-icon">
     <link rel="apple-touch-icon" href="<c:url value='/template/web/images/apple-touch-icon.png'/>">
-
+	<link rel="stylesheet" href="<c:url value='/template/web/fonts/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css' />">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<c:url value='/template/web/css/bootstrap.min.css'/> ">
     <!-- Site CSS -->
