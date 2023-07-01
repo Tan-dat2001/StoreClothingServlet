@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c685ba36-591b-4e6d-b380-35f930ad98d1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.classpath" beforeDir="false" afterPath="$PROJECT_DIR$/.classpath" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/.settings/org.eclipse.core.resources.prefs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingstore/controller/web/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingstore/controller/web/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingstore/dao/impl/AccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingstore/dao/impl/AccountDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingstore/model/DeliveryMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingstore/model/DeliveryMethod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/decorators.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/common/web/footer.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/common/web/footer.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/common/web/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/common/web/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/decorators/loginRegister.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/decorators/web.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/decorators/web.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/views/web/home.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/views/web/home.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingstore/controller/web/HomeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clothingstore/controller/web/HomeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/clothingstore/dao/IAccountDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/clothingstore/dao/IAccountDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingstore/dao/IAccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clothingstore/dao/IAccountDAO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/clothingstore/dao/impl/AccountDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clothingstore/dao/impl/AccountDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/clothingstore/model/DeliveryMethod.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/clothingstore/model/DeliveryMethod.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.clothingstore/ClothingStore/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/m2e-wtp/web-resources/META-INF/maven/com.clothingstore/ClothingStore/pom.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +33,7 @@
       <option name="presentableId" value="Default" />
       <updated>1688113434566</updated>
       <workItem from="1688113437507" duration="3000" />
+      <workItem from="1688114194274" duration="8000" />
     </task>
     <servers />
   </component>

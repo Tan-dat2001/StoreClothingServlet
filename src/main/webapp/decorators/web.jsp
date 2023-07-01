@@ -28,7 +28,7 @@
     <%@ include file="/common/web/header.jsp" %>
     <!-- header -->
     
-    <div class="container">
+    <div>
     	<dec:body/>
     </div>
 

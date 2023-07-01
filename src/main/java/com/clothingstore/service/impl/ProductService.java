@@ -47,13 +47,11 @@ public class ProductService implements IProductService {
 
 	@Override
 	public void updateProduct(Product product) {
-		
 		productDAO.updateProduct(product);
 	}
 
 	@Override
 	public void deleteProduct(int productId) {
-		
 		productDAO.deleteProduct(productId);
 	}
 

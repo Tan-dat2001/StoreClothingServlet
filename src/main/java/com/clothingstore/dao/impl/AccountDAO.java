@@ -182,12 +182,12 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		if(connection != null) {
+		if (connection != null) {
 			try {
 				statement = connection.prepareStatement(sql);
 				statement.setString(1, isActive);
 				resultSet = statement.executeQuery();
-				while(resultSet.next()) {
+				while (resultSet.next()) {
 					int accountId = resultSet.getInt("account_id");
 					String email = resultSet.getString("email");
 					String password = resultSet.getString("password");
@@ -201,8 +201,9 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 					String createBy = resultSet.getString("create_by");
 					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
-					
-					account = new Account(updateAt, updateBy, createAt, createBy, accountId, email, password, name, role, isActive, gender, address, phone, dateOfBirth);
+
+					account = new Account(updateAt, updateBy, createAt, createBy, accountId, email, password, name,
+							role, isActive, gender, address, phone, dateOfBirth);
 					results.add(account);
 				}
 				return results;
@@ -231,10 +232,10 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 	@Override
 	public void createAccount(Account account) {
 		String sql = "insert into account(email,password,name,gender) values(?,?,?,?)";
-		Connection  connection = getConnection();
+		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
-		if(connection != null) {
+		if (connection != null) {
 			try {
 				statement = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				statement.setString(1, account.getEmail());
@@ -242,9 +243,9 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 				statement.setString(3, account.getName());
 				statement.setString(4, account.getGender());
 				statement.executeUpdate();
-				
+
 				resultSet = statement.getGeneratedKeys();
-				if(resultSet.next()) {
+				if (resultSet.next()) {
 					int accountId = resultSet.getInt(1);
 					account.setAccount_id(accountId);
 				}
@@ -266,7 +267,7 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 				}
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -274,7 +275,7 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 		String sql = "update account set email=?, password=?, name=?, gender=?, address=?, phone=?, dateofbirth=? where account_id=? ";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
-		if(connection != null) {
+		if (connection != null) {
 			try {
 				statement = connection.prepareStatement(sql);
 				statement.setString(1, account.getEmail());
@@ -309,14 +310,14 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 		String sql = "delete from account where account_id = ?";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
-		if(connection!=null) {
+		if (connection != null) {
 			try {
 				statement = connection.prepareStatement(sql);
 				statement.setInt(1, accountId);
 				statement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
-			}finally {
+			} finally {
 				try {
 					if (connection != null) {
 						connection.close();
@@ -331,6 +332,31 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 		}
 	}
 
+	@Override
+	public boolean checkLogin(String email, String password) {
+		boolean isValid = false;
+		Connection connection = getConnection();
+		String sql = "select * from account where email =?  and password=?";
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		if (connection != null) {
+			try {
+				statement = connection.prepareStatement(sql);
+				statement.setString(1, email);
+				statement.setString(2, password);
+				resultSet = statement.executeQuery();
+				if(resultSet.next()) {
+					isValid = true;
+				}else {
+					isValid = false;
+				}
+			} catch (SQLException e) {
+				return false;
+			}
+		}
+		return isValid;
+	}
+
 //	@SuppressWarnings("deprecation")
 //  Test - chưa test createAccount
 	public static void main(String[] args) {
@@ -343,7 +369,7 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 		newAccount.setGender("nam");
 		newAccount.setAddress("DUY NGHIA, DUY XUYEN, QUANG NAM");
 		newAccount.setPhone("0954545555");
-		newAccount.setDateOfBirth(new Date(2001-1900, 3, 13));
+		newAccount.setDateOfBirth(new Date(2001 - 1900, 3, 13));
 //		accountDAO.updateAccount(newAccount);
 //		accountDAO.deleteAccount(4);
 //		System.out.println(accountDAO.getAccountById(1).toString());

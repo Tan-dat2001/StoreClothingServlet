@@ -1,6 +1,9 @@
+<%@page import="java.util.logging.ErrorManager"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp" %>
+<%-- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+ --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,19 +15,30 @@
         <h2 style="text-align: center;">Đăng nhập</h2>
         <div class="bg-white  rounded-5" >
             <section class="w-100 p-4 d-flex justify-content-center pb-4">
-                <form style="width: 22rem;">
+            	
+                <form style="width: 22rem;" method="post" action="dang-nhap">
                     <!-- Email input -->
                     <div class="form-outline mb-4">
-                      <input type="email" id="form2Example1" class="form-control" name="email" />
+                      <input type="email" id="form2Example1" class="form-control" name="txtemail" />
                       <label class="form-label" for="form2Example1">Email</label>
                     </div>
                   
                     <!-- Password input -->
                     <div class="form-outline mb-4">
-                      <input type="password" id="form2Example2" class="form-control" name="password"/>
+                      <input type="password" id="form2Example2" class="form-control" name="txtpassword"/>
                       <label class="form-label" for="form2Example2">Mật khẩu</label>
                     </div>
-                  
+                  	 <%
+                  	HttpSession ss = request.getSession();
+                  	String errorMessage = (String)ss.getAttribute("errorMessage"); 
+                  	if(errorMessage != null){
+                  %>
+                  	<div class="row text-center" style="color: red;">
+	                  		<div class="error-message">${errorMessage}</div>
+	                 </div>
+                  <%	
+                  	}
+                  %>  
                     <!-- 2 column grid layout for inline styling -->
                     <div class="row mb-4">
                       <div class="col d-flex justify-content-center">
@@ -42,11 +56,11 @@
                     </div>
                   
                     <!-- Submit button -->
-                    <button type="button" class="btn btn-primary btn-block mb-4 btn-login" >Đăng nhập</button>
-                  
+                    <button type="submit" class="btn btn-primary btn-block mb-4 btn-login" >Đăng nhập</button>
+                  	
                     <!-- Register buttons -->
                     <div class="text-center">
-                      <p>Not a member? <a href="register.html">Đăng ký</a></p>
+                      <p>Not a member? <a href="sign-up">Đăng ký</a></p>
                       <p>or sign up with:</p>
                       <button type="button" class="btn btn-link btn-floating mx-1">
                         <i class="fab fa-facebook-f"></i>
@@ -64,7 +78,9 @@
                         <i class="fab fa-github"></i>
                       </button>
                     </div>
-                  </form>   
+                  </form>
+                  
+                 
             </section>
         </div>
     </div>
