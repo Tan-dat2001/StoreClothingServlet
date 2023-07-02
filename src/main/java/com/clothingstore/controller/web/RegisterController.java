@@ -60,7 +60,7 @@ public class RegisterController extends HttpServlet {
 		}else {
 			Account account = new Account(0, email, password, fullName, null, null, gender, null, null, null);
 			accountService.createAccount(account);
-			url = "web-home";
+			url = "dang-nhap";
 			//sau khi đăng ký chuyển về trang home nhưng url vẫn là sign-up, sai UI.
 		}
 		RequestDispatcher rd = request.getRequestDispatcher(url);

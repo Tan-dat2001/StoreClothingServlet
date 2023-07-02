@@ -38,7 +38,7 @@
 				<div class="our-link">
 					<ul>
 						<li><a href="web-home">Trang chủ</a></li>
-						<li><a href="dang-nhap"> <%
+						<li><a href="log-in"> <%
 							 HttpSession ss = request.getSession();
 							 String name = ((String) ss.getAttribute("name"));
 							 String key = name == null ? "Đăng nhập" : " ";

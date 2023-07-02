@@ -197,3 +197,24 @@
 .small{
   font-weight: bolder;
 }
+
+
+/*  */
+img.image-product{
+  min-height: 352px;
+}
+
+.why-text{
+  height: 124px;
+  
+}
+
+  /* .product-categori-custom-parent{
+    position: relative;
+  }
+  .product-categori-custom-child{
+    position: fixed;
+    top: 0;
+    z-index: 1;  
+  } */
+
