@@ -4,14 +4,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.clothingstore.dao.impl.PaymentMethodDAO;
+import com.clothingstore.dao.IPaymentMethodDAO;
 import com.clothingstore.model.PaymentMethod;
 import com.clothingstore.service.IPaymentMethodService;
 
 public class PaymentMethodService implements IPaymentMethodService{
 
 	@Inject
-	private PaymentMethodDAO paymentMethodDAO;
+	private IPaymentMethodDAO paymentMethodDAO;
 	@Override
 	public List<PaymentMethod> getAllPaymentMethod() {
 		return paymentMethodDAO.getAllPaymentMethod();

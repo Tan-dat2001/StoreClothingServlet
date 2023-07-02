@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.clothingstore.model.DeliveryMethod;
 
-public interface IDeliveryMethod {
+public interface IDeliveryMethodDAO {
 	
 	List<DeliveryMethod> getAllDeliveryMethod();
 	

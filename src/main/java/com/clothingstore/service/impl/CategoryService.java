@@ -25,4 +25,34 @@ public class CategoryService implements ICategoryService {
 		return categoryDAO.getAllCategory();
 	}
 
+	@Override
+	public Category getOneCategoryById(int categoryId) {
+		// TODO Auto-generated method stub
+		return categoryDAO.getOneCategoryById(categoryId);
+	}
+
+	@Override
+	public void createCategory(Category category) {
+		// TODO Auto-generated method stub
+		categoryDAO.createCategory(category);
+	}
+
+	@Override
+	public void updateCategory(Category category) {
+		// TODO Auto-generated method stub
+		categoryDAO.updateCategory(category);
+	}
+
+	@Override
+	public void deleteCategory(int categoryId) {
+		// TODO Auto-generated method stub
+		categoryDAO.deleteCategory(categoryId);
+	}
+
+	@Override
+	public List<Category> getCategoriesByWord(String keyword) {
+		// TODO Auto-generated method stub
+		return categoryDAO.getCategoriesByWord(keyword);
+	}
+
 }

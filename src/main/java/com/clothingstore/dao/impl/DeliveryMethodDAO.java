@@ -9,10 +9,10 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.clothingstore.dao.IDeliveryMethod;
+import com.clothingstore.dao.IDeliveryMethodDAO;
 import com.clothingstore.model.DeliveryMethod;
 
-public class DeliveryMethodDAO extends AbstractDAO implements IDeliveryMethod {
+public class DeliveryMethodDAO extends AbstractDAO implements IDeliveryMethodDAO {
 
 	@Override
 	public List<DeliveryMethod> getAllDeliveryMethod() {

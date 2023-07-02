@@ -9,11 +9,11 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.clothingstore.dao.IPaymentMethod;
+import com.clothingstore.dao.IPaymentMethodDAO;
 import com.clothingstore.model.Category;
 import com.clothingstore.model.PaymentMethod;
 //DONE
-public class PaymentMethodDAO extends AbstractDAO implements IPaymentMethod{
+public class PaymentMethodDAO extends AbstractDAO implements IPaymentMethodDAO{
 
 	@Override
 	public List<PaymentMethod> getAllPaymentMethod() {

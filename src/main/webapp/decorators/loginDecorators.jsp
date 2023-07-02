@@ -59,8 +59,8 @@
 					</div>
 					<div class="our-link">
 						<ul>
-							<li><a href="#">Trang chủ</a></li>
-							<li><a href="login.html">Đăng nhập</a></li>
+							<li><a href="web-home">Trang chủ</a></li>
+							<li><a href="log-in">Đăng nhập</a></li>
 
 						</ul>
 					</div>

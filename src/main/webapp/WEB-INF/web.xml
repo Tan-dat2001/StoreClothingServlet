@@ -48,4 +48,24 @@
     <servlet-name>SignUpController</servlet-name>
     <url-pattern>/SignUpController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SearchProductController</display-name>
+    <servlet-name>SearchProductController</servlet-name>
+    <servlet-class>com.clothingstore.controller.web.SearchProductController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchProductController</servlet-name>
+    <url-pattern>/SearchProductController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ProductByCategoryController</display-name>
+    <servlet-name>ProductByCategoryController</servlet-name>
+    <servlet-class>com.clothingstore.controller.web.ProductByCategoryController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductByCategoryController</servlet-name>
+    <url-pattern>/ProductByCategoryController</url-pattern>
+  </servlet-mapping>
 </web-app>

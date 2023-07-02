@@ -38,13 +38,19 @@
 				<div class="our-link">
 					<ul>
 						<li><a href="web-home">Trang chủ</a></li>
-						<li><a href="log-in"> <%
-							 HttpSession ss = request.getSession();
-							 String name = ((String) ss.getAttribute("name"));
-							 String key = name == null ? "Đăng nhập" : " ";
-							 %> <%=key%>
-						</a></li>
-
+						<%
+						HttpSession ss = request.getSession();
+						String name = ((String) ss.getAttribute("name"));
+						if (name != null) {
+						%>
+						<li style="font-size: 16px; font-weight: 600; color: white;">${name}</li>
+						<%
+						} else {
+						%>
+						<li><a href="log-in">Đăng nhập</a></li>
+						<%
+						}
+						%>
 
 					</ul>
 				</div>
@@ -84,36 +90,38 @@
 						class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Áo
 							nam</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Sơ mi</a></li>
-							<li><a href="#">Polo</a></li>
-							<li><a href="#">Thun</a></li>
-							<li><a href="#">Áo khoác</a></li>
+							<c:forEach var="i" items="${listCategoriesAo}">
+								<li><a href="product-category?categoryId=${i.category_id}">${i.categoryName}</a></li>
+							</c:forEach>
+
+
 						</ul></li>
 					<li class="dropdown"><a href="#"
 						class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Quần
 							nam</a>
 						<ul class="dropdown-menu">
-							<li><a href="#">Quần âu</a></li>
-							<li><a href="#">Quần jeans</a></li>
-							<li><a href="#">Quần shorts</a></li>
-							<li><a href="#">Quần Kaki</a></li>
+							<c:forEach var="i" items="${listCategoriesQuan}">
+								<li><a href="#">${i.categoryName}</a></li>
+							</c:forEach>
+
 						</ul></li>
-					<li class="nav-item"><a class="nav-link" href="views/web/aboutStore.jsp">Cửa hàng</a></li>
+					<li class="nav-item"><a class="nav-link"
+						href="views/web/aboutStore.jsp">Cửa hàng</a></li>
 					<li class="dropdown"><a href="#"
 						class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
-							<% if(name != null){ %>
-									${name}
-							<%}else{%>
-								Tài khoản
-							<%}
-							%>
-						<i class="fa-solid fa-user" style="padding-left: 4px;"></i>
+							<%
+							if (name != null) {
+							%> ${name} <%
+							 } else {
+							 %> Tài khoản <%
+							 }
+							 %> <i class="fa-solid fa-user" style="padding-left: 4px;"></i>
 					</a>
 						<ul class="dropdown-menu">
 							<li><a href="my-account.html">Thông tin tài khoản</a></li>
 							<li><a href="cart.html">Giỏ hàng</a></li>
 							<li><a href="shop-detail.html">Shop Detail</a></li>
-							
+
 							<c:if test="${email != null}">
 								<li><a href="log-out">Đăng xuất</a></li>
 							</c:if>
@@ -125,11 +133,9 @@
 			<!-- Start Atribute Navigation -->
 
 			<div class="container__search menu-right-row">
-				<form action="#" class="search" method="get">
-					<input class="search__input" type="text"
-						placeholder="Nhập tên, mã sản phẩm"> <input
-						name="post_type" type="hidden" value="product">
-					<button class="search__icon">
+				<form action="search" class="search" method="post">
+					<input class="search__input" name="name-search" type="text" placeholder="Nhập tên, mã sản phẩm" >
+					<button type="submit" class="search__icon">
 						<i class="fa fa-search"></i>
 					</button>
 				</form>

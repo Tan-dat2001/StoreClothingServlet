@@ -4,14 +4,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.clothingstore.dao.impl.DeliveryMethodDAO;
+import com.clothingstore.dao.IDeliveryMethodDAO;
 import com.clothingstore.model.DeliveryMethod;
 import com.clothingstore.service.IDeliveryMethodService;
 
 public class DeliveryMethodService implements IDeliveryMethodService{
 
 	@Inject
-	private DeliveryMethodDAO deliveryMethodDAO;
+	private IDeliveryMethodDAO deliveryMethodDAO;
 	@Override
 	public List<DeliveryMethod> getAllDeliveryMethod() {
 		return deliveryMethodDAO.getAllDeliveryMethod();

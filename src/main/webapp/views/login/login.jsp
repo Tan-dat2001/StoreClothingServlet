@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div class="pb-4 mt-5 ">
-        <h2 style="text-align: center;">Đăng nhập</h2>
+        <h2  style="text-align: center; ">Đăng nhập</h2>
         <div class="bg-white  rounded-5" >
             <section class="w-100 p-4 d-flex justify-content-center pb-4">
             	
@@ -61,8 +61,8 @@
                     <!-- Register buttons -->
                     <div class="text-center">
                       <p>Not a member? <a href="sign-up">Đăng ký</a></p>
-                      <p>or sign up with:</p>
-                      <button type="button" class="btn btn-link btn-floating mx-1">
+                      <!-- <p>or sign up with:</p> -->
+                     <!--  <button type="button" class="btn btn-link btn-floating mx-1">
                         <i class="fab fa-facebook-f"></i>
                       </button>
                   
@@ -76,7 +76,7 @@
                   
                       <button type="button" class="btn btn-link btn-floating mx-1">
                         <i class="fab fa-github"></i>
-                      </button>
+                      </button> -->
                     </div>
                   </form>
                   

@@ -19,7 +19,7 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 	public List<Product> getAllProduct() {
 		List<Product> results = new ArrayList<>();
 		Product product = null;
-		String sql = "select * from product";
+		String sql = "select * from product order by product_id desc limit 20";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;

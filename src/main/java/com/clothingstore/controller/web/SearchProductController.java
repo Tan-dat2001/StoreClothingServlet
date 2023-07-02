@@ -16,8 +16,8 @@ import com.clothingstore.model.Product;
 import com.clothingstore.service.impl.CategoryService;
 import com.clothingstore.service.impl.ProductService;
 
-@WebServlet(urlPatterns = "/web-home")
-public class HomeController extends HttpServlet {
+@WebServlet(urlPatterns = "/search")
+public class SearchProductController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	@Inject
@@ -26,7 +26,8 @@ public class HomeController extends HttpServlet {
 	@Inject
 	private ProductService productService;
 
-	public HomeController() {
+	public SearchProductController() {
+
 	}
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
@@ -36,22 +37,24 @@ public class HomeController extends HttpServlet {
 
 		List<Category> listCategoriesQuan = categoryService.getCategoriesByWord("quan");
 		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
-
-		List<Product> listProducts = productService.getAllProduct();
-		request.setAttribute("listProducts", listProducts);
 		
+		String nameSearch = request.getParameter("name-search");
+		List<Product> listProducts = productService.searchProduct(nameSearch);
+		request.setAttribute("listProducts", listProducts);
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
 		rd.forward(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
+//	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//
+//		
+//
+//	}
+//
+//	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+//			throws ServletException, IOException {
+//		
+//	}
 
 }

@@ -4,14 +4,14 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import com.clothingstore.dao.impl.AccountDAO;
+import com.clothingstore.dao.IAccountDAO;
 import com.clothingstore.model.Account;
 import com.clothingstore.service.IAccountService;
 
 public class AccountService implements IAccountService{
 	
 	@Inject
-	private AccountDAO accountDAO;
+	private IAccountDAO accountDAO;
 	
 	@Override
 	public List<Account> getAllAccount() {

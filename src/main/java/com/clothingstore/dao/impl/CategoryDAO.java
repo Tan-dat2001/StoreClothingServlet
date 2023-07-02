@@ -11,6 +11,7 @@ import java.util.List;
 
 import com.clothingstore.dao.ICategoryDAO;
 import com.clothingstore.model.Category;
+import com.clothingstore.model.Product;
 //DONE
 public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 
@@ -196,5 +197,50 @@ public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 //		System.out.println(categoryDAO.getAllCategory());
 //		System.out.println(categoryDAO.getOneCategoryById(2));
 
+	}
+
+	@Override
+	public List<Category> getCategoriesByWord(String keyword) {
+		List<Category> results = new ArrayList<>();
+		String sql ="select * from category where category_name like ?";
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		if (connection != null) {
+			try {
+				statement = connection.prepareStatement(sql);
+				statement.setString(1, "%" + keyword + "%");
+				resultSet = statement.executeQuery();
+				while (resultSet.next()) {
+					int category_id = resultSet.getInt("category_id");
+					String category_name = resultSet.getString("category_name");
+					Timestamp createAt = resultSet.getTimestamp("create_at");
+					String createBy = resultSet.getString("create_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
+					String updateBy = resultSet.getString("update_by");
+					Category category = new Category(updateAt, updateBy, createAt, createBy, category_id, category_name);
+					results.add(category);
+				}
+				return results;
+			} catch (SQLException e) {
+				return null;
+			} finally {
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+					if (resultSet != null) {
+						resultSet.close();
+					}
+				} catch (SQLException e) {
+					return null;
+				}
+			}
+		}
+
+		return null;
 	}
 }

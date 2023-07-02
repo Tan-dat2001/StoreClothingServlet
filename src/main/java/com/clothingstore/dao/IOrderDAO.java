@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.clothingstore.model.Order;
 
-public interface IOrder {
+public interface IOrderDAO {
 
 	List<Order> getAllOrder();
 	

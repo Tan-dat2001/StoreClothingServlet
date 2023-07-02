@@ -20,4 +20,6 @@ public interface IProductDAO {
 	void deleteProduct(int productId); //done
 	
 	List<Product> searchProduct(String keyword); //done
+	
+	
 }

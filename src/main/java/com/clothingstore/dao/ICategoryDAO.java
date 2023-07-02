@@ -14,4 +14,6 @@ public interface ICategoryDAO {
 	void updateCategory(Category category);
 	
 	void deleteCategory(int categoryId);
+	
+	List<Category> getCategoriesByWord(String keyword);
 }

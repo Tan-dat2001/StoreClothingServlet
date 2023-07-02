@@ -6,7 +6,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%-- <title><dec:title default="Đăng ký"/></title> --%>
 <title>Đăng ký</title>
 </head>
 <body>
@@ -44,21 +43,14 @@
                         <input id="radio2" type="radio" value="nam" name="gender"/> 
                         <label for="radio2">Nam</label>
                     </div>
-                    <!-- 2 column grid layout for inline styling -->
-                    <!-- <div class="row mb-4">
-                        <div class="form-group">
-                            <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                            <label for="agree-term" class="label-agree-term"><span><span></span></span>Tôi đ  <a href="#" class="term-service">Terms of service</a></label>
-                        </div>
-                    </div> -->
-
+                    
                     <!-- Submit button -->
                     <button type="submit" class="btn btn-primary btn-block mb-4 btn-login">Đăng ký</button>
 
                     <!-- Register buttons -->
                     <div class="text-center">
-                        <p>Bạn đã có tài khoản: <a href="login.html">Đăng nhập</a></p>
-                        <p>Hoặc đăng nhập với</p>
+                        <p>Bạn đã có tài khoản: <a href="log-in" style="font-size: 20px;">Đăng nhập</a></p>
+                        <!-- <p>Hoặc đăng nhập với</p>
                         <button type="button" class="btn btn-link btn-floating mx-1">
                             <i class="fab fa-facebook-f"></i>
                         </button>
@@ -73,7 +65,7 @@
 
                         <button type="button" class="btn btn-link btn-floating mx-1">
                             <i class="fab fa-github"></i>
-                        </button>
+                        </button> -->
                     </div>
                 </form>
             </section>

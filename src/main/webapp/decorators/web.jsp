@@ -21,9 +21,10 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<c:url value='/template/web/css/custom.css'/> ">
     <link rel="stylesheet" href="<c:url value='/template/web/css/orderPage.css'/> ">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
+    crossorigin="anonymous" />
 <!--     <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
-<!--     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"> -->
+<!--      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">  -->
 </head>
 <body>
 	<!-- header -->

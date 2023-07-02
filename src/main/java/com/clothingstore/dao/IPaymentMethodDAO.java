@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.clothingstore.model.PaymentMethod;
 
-public interface IPaymentMethod {
+public interface IPaymentMethodDAO {
 	
 	List<PaymentMethod> getAllPaymentMethod();
 	
