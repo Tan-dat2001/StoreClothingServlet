@@ -35,8 +35,10 @@ public class LoginController extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher rd = request.getRequestDispatcher("views/login/login.jsp");
-		rd.forward(request, response);
+		
+		 RequestDispatcher rd = request.getRequestDispatcher("views/login/login.jsp");
+		 rd.forward(request, response);
+		 
 	}
 
 
@@ -52,14 +54,17 @@ public class LoginController extends HttpServlet {
 		if(isValid) {
 			
 			Account account = accountService.getAccountByEmail(email);
+			session.setAttribute("currentAccount", account);
 			session.setAttribute("email", email);
 			session.setAttribute("name", account.getName());
 			session.setAttribute("accountId", account.getAccount_id());
+			System.out.println(account.getAccount_id());
 			RequestDispatcher rd = request.getRequestDispatcher("views/web/home.jsp");
 			rd.forward(request, response);
 			response.sendRedirect("web-home");
 		}else {
-			session.setAttribute("errorMessage", "Đăng nhập thất bại! Vui lòng kiểm tra lại email và mật khẩu.");
+			
+			session.setAttribute("errorMessage"," Đăng nhập thất bại! Vui lòng kiểm tra lại email và mật khẩu.");			 		
 			RequestDispatcher rq = request.getRequestDispatcher("views/login/login.jsp");
 			rq.forward(request, response);
 		}

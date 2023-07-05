@@ -1,11 +1,11 @@
 package com.clothingstore.model;
 
 // Class is stored the items 
-public class CartItem {
+public class Item {
 	private Product product;
 	private int quantity;
 	private float price;
-	public CartItem() {
+	public Item() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -25,6 +25,12 @@ public class CartItem {
 		return price;
 	}
 	public void setPrice(float price) {
+		this.price = price;
+	}
+	public Item(Product product, int quantity, float price) {
+		super();
+		this.product = product;
+		this.quantity = quantity;
 		this.price = price;
 	}
 	

@@ -117,7 +117,7 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 				}
 			}
 		}
-		return null;
+		return product;
 	}
 
 	@Override
@@ -392,23 +392,24 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 	public static void main(String[] args) {
 		ProductDAO productDAO = new ProductDAO();
 		Product product = new Product();
-		product.setCategory_id(1);
-		product.setDiscount_id(1);
-		product.setProductName("Áo sơ mi Torano");
-		product.setProductDesc("Co giãn tốt, chất liệu vải thiên nhiên");
-		product.setProductPrice(5555000);
-		product.setProductImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ2PrKjcquzshqyA5UrJOpc-RelJUchBPxeIOiuqk&s");
-		product.setPurchases(25);
-		product.setQuantity(250);
-		product.setStatus("enabled");
-		product.setProduct_id(54);
+//		product.setCategory_id(1);
+//		product.setDiscount_id(1);
+//		product.setProductName("Áo sơ mi Torano");
+//		product.setProductDesc("Co giãn tốt, chất liệu vải thiên nhiên");
+//		product.setProductPrice(5555000);
+//		product.setProductImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ2PrKjcquzshqyA5UrJOpc-RelJUchBPxeIOiuqk&s");
+//		product.setPurchases(25);
+//		product.setQuantity(250);
+//		product.setStatus("enabled");
+//		product.setProduct_id(54);
 //		productDAO.createProduct(product);
 //		System.out.println(productDAO.getAllProduct().toString());
-//		System.out.println(productDAO.getProductById(1));
+		System.out.println(productDAO.getProductById(1));
 //		System.out.println(productDAO.getProductByCategoryId(2));
 //		System.out.println(productDAO.getProductByPriceRange(500000, 1000000));
 //		productDAO.updateProduct(product);
 //		productDAO.deleteProduct(53);
 		System.out.println(productDAO.searchProduct("ao"));
+		
 	}
 }

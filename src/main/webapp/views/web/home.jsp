@@ -139,28 +139,33 @@
 
 			<div class="row special-list">
 				<c:forEach var="i" items="${listProducts}">
-					<div class="col-lg-3 col-md-6 special-grid ">
-						<div class="products-single fix">
-							<div class="box-img-hover box-img-hover-custom">
-								<div class="type-lb">
-									<p class="sale">Sale</p>
+					
+						<div class="col-lg-3 col-md-6 special-grid ">
+							<div class="products-single fix">
+								<div class="box-img-hover box-img-hover-custom">
+									<div class="type-lb">
+										<p class="sale">Sale</p>
+									</div>
+									<img src="${i.productImage}" class="img-fluid" alt="Image"
+										style="height: 240px; width: 255px;">
+									<div class="mask-icon">
+										<ul>
+											<li><a href="product-detail?productId=${i.product_id}" data-toggle="tooltip"
+												data-placement="right" title="View"><i
+													class="fas fa-eye"></i></a></li>
+										</ul>
+										<a class="cart" href="addtocart?productId=${i.product_id}&quantity=1">Thêm vào giỏ hàng</a>
+									</div>
 								</div>
-								<img src="${i.productImage}" class="img-fluid" alt="Image"
-									style="height: 240px; width: 255px;">
-								<div class="mask-icon">
-									<ul>
-										<li><a href="product-detail.html" data-toggle="tooltip"
-											data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-									</ul>
-									<a class="cart" href="#">Add to Cart</a>
+								<div class="why-text">
+									<a href="product-detail?productId=${i.product_id}">
+										<h4>${i.productName}</h4>
+										<h5>${i.productPrice}đ</h5>
+									</a>
 								</div>
-							</div>
-							<div class="why-text">
-								<h4>${i.productName}</h4>
-								<h5>${i.productPrice}đ</h5>
 							</div>
 						</div>
-					</div>
+					
 				</c:forEach>
 
 

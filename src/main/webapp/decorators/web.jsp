@@ -7,8 +7,8 @@
 
     <!-- css -->
     <link href="<c:url value='/template/web/assets/favicon.ico'/>">
-    <link href="<c:url value='/template/web/css/styles.css' />" rel="stylesheet" type="text/css" media="all"/>
-    <!-- Site Icons -->
+<%--     <link href="<c:url value='/template/web/css/styles.css' />" rel="stylesheet" type="text/css" media="all"/>
+ --%>    <!-- Site Icons -->
     <link rel="shortcut icon" href="<c:url value='/template/web/images/favicon.ico'/>" type="image/x-icon">
     <link rel="apple-touch-icon" href="<c:url value='/template/web/images/apple-touch-icon.png'/>">
 	<link rel="stylesheet" href="<c:url value='/template/web/fonts/fontawesome-free-6.1.1-web/fontawesome-free-6.1.1-web/css/all.min.css' />">
@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="<c:url value='/template/web/css/responsive.css'/> ">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="<c:url value='/template/web/css/custom.css'/> ">
+    <link rel="stylesheet" href="<c:url value='/template/web/css/my-account.css'/> ">
     <link rel="stylesheet" href="<c:url value='/template/web/css/orderPage.css'/> ">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" 
     crossorigin="anonymous" />
@@ -53,6 +54,8 @@
 	<script type="text/javascript" src="<c:url value='/template/web/js/isotope.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/template/web/js/owl.carousel.min.js'/>"></script>
 	<script type="text/javascript" src="<c:url value='/template/web/js/baguetteBox.min.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/template/web/js/jquery-ui.js' />"></script>
+	<script type="text/javascript" src="<c:url value='/template/web/js/jquery.nicescroll.min.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/template/web/js/form-validator.min.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/template/web/js/contact-form-script.js' />"></script>
 	<script type="text/javascript" src="<c:url value='/template/web/js/custom.js' />"></script>

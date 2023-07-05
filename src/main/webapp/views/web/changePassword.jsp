@@ -9,6 +9,10 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+	<%
+		HttpSession ss = request.getSession();
+		String currentPasswordInput = (String)ss.getAttribute("currentPasswordInput");
+	%>
     <div class="container">
         <div class="view-account">
             <section class="module">
@@ -23,29 +27,30 @@
                         </div>
                         <nav class="side-menu">
                             <ul class="nav">
-                                <li class="active"><a href="profile.html"><span class="fa fa-user"></span> Hồ sơ</a></li>
-                                <li><a href="order-page.html"><span class="fa fa-credit-card"></span> Đơn mua</a></li>
+                                <li class="active"><a href="my-account"><span class="fa fa-user"></span> Hồ sơ</a></li>
+                                <li><a href="order-page"><span class="fa fa-credit-card"></span> Đơn mua</a></li>
                                 <li><a href="#"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="content-panel">
-                        <form class="form-horizontal" action="" method="post">
+                        <form class="form-horizontal" action="change-password" method="post">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                 <h4 class="panel-title">Thay đổi mật khẩu</h4>
                                 </div>
                                 <div class="panel-body">
                                   <div class="form-group">
+                                  	<div>${currentPasswordInput}</div>
                                     <label class="col-sm-2 control-label">Mật khẩu hiện tại</label>
                                     <div class="col-sm-10">
-                                      <input type="password" class="form-control">
+                                      <input type="password" class="form-control" name="currentPass">
                                     </div>
                                   </div>
                                   <div class="form-group">
                                     <label class="col-sm-2 control-label">Mật khẩu mới</label>
                                     <div class="col-sm-10">
-                                      <input type="password" class="form-control">
+                                      <input type="password" class="form-control" name="newPass">
                                     </div>
                                   </div>
                                   

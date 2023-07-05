@@ -63,8 +63,9 @@ public class RegisterController extends HttpServlet {
 			url = "dang-nhap";
 			//sau khi đăng ký chuyển về trang home nhưng url vẫn là sign-up, sai UI.
 		}
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request, response);
+//		RequestDispatcher rd = request.getRequestDispatcher(url);
+//		rd.forward(request, response);
+		response.sendRedirect(url);
 	}
 
 }

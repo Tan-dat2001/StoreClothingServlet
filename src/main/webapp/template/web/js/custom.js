@@ -1,6 +1,6 @@
 (function($) {
-    "use strict";
-	
+	"use strict";
+
 	/* ..............................................
 	   Loader 
 	   ................................................. */
@@ -189,21 +189,32 @@
 	/* ..............................................
 	   Slider Range
 	   ................................................. */
-
+	/*
+		$(function() {
+			$("#slider-range").slider({
+				range: true,
+				min: 0,
+				max: 3000000,
+				values: [0, 3000000],
+				slide: function(event, ui) {
+					$("#amount").val( ui.values[0] +" đ  - " + ui.values[1] + " đ");
+				}
+			});
+			$("#amount").val( $("#slider-range").slider("values", 0) + "đ - " + $("#slider-range").slider("values", 1)+ "đ");
+		});
+	*/
 	$(function() {
 		$("#slider-range").slider({
 			range: true,
 			min: 0,
-			max: 4000,
-			values: [1000, 3000],
+			max: 3000000,
+			values: [0, 3000000],
 			slide: function(event, ui) {
-				$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+				$("#amount").val(ui.values[0].toLocaleString('en-US') + "d - " + ui.values[1].toLocaleString('en-US') + "d");
 			}
 		});
-		$("#amount").val("$" + $("#slider-range").slider("values", 0) +
-			" - $" + $("#slider-range").slider("values", 1));
+		$("#amount").val($("#slider-range").slider("values", 0).toLocaleString('en-US') + "d - " + $("#slider-range").slider("values", 1).toLocaleString('en-US') + "d");
 	});
-
 	/* ..............................................
 	   NiceScroll
 	   ................................................. */
@@ -211,6 +222,6 @@
 	$(".brand-box").niceScroll({
 		cursorcolor: "#9b9b9c",
 	});
-	
-	
+
+
 }(jQuery));

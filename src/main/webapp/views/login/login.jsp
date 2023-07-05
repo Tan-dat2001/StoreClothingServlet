@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title><dec:title default="Đăng Nhập"/></title>
+<title>Đăng nhập</title>
 </head>
 <body>
 	<div class="pb-4 mt-5 ">

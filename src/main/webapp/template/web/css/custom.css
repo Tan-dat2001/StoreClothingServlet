@@ -201,7 +201,8 @@
 
 /*  */
 img.image-product{
-  min-height: 352px;
+  height: 352px;
+  width:100%;
 }
 
 .why-text{

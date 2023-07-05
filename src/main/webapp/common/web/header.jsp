@@ -40,8 +40,10 @@
 						<li><a href="web-home">Trang chủ</a></li>
 						<%
 						HttpSession ss = request.getSession();
-						String name = ((String) ss.getAttribute("name"));
-						if (name != null) {
+						String name = ((String)ss.getAttribute("name"));
+						String email = ((String)ss.getAttribute("email"));
+						int accountId = (Integer)ss.getAttribute("accountId");
+  						if (name != null) {
 						%>
 						<li style="font-size: 16px; font-weight: 600; color: white;">${name}</li>
 						<%
@@ -82,8 +84,8 @@
 			<div class="collapse navbar-collapse" id="navbar-menu">
 				<ul class="nav navbar-nav ml-auto" data-in="fadeInDown"
 					data-out="fadeOutUp">
-					<li class="nav-item active"><a class="nav-link"
-						href="index.html">Trang chủ</a></li>
+					<li class="nav-item "><a class="nav-link"
+						href="web-home">Trang chủ</a></li>
 
 
 					<li class="dropdown"><a href="#"
@@ -101,13 +103,14 @@
 							nam</a>
 						<ul class="dropdown-menu">
 							<c:forEach var="i" items="${listCategoriesQuan}">
-								<li><a href="#">${i.categoryName}</a></li>
+								<li><a href="product-category?categoryId=${i.category_id}">${i.categoryName}</a></li>
 							</c:forEach>
 
 						</ul></li>
 					<li class="nav-item"><a class="nav-link"
-						href="views/web/aboutStore.jsp">Cửa hàng</a></li>
-					<li class="dropdown"><a href="#"
+						href="about-store">Cửa hàng</a></li>
+					<li class="dropdown">
+						<a href="#"
 						class="nav-link dropdown-toggle arrow" data-toggle="dropdown">
 							<%
 							if (name != null) {
@@ -116,16 +119,28 @@
 							 %> Tài khoản <%
 							 }
 							 %> <i class="fa-solid fa-user" style="padding-left: 4px;"></i>
-					</a>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="my-account.html">Thông tin tài khoản</a></li>
-							<li><a href="cart.html">Giỏ hàng</a></li>
-							<li><a href="shop-detail.html">Shop Detail</a></li>
-
-							<c:if test="${email != null}">
+							<%
+								if(name!=null){
+							%>
+							<li><a href="my-account?accountId=${accountId}">Thông tin tài khoản</a></li>
+							<li><a href="cart">Giỏ hàng</a></li>
+							<li><a href="log-out">Đăng xuất</a></li>
+							<%		
+								}else{%>
+								<li><a href="cart">Giỏ hàng</a></li>
+ 								<li><a href="log-in">Đăng nhập</a></li>
+							<%	
+								}
+							%>
+ 							
+							<%-- <c:if test="${email != null}">
 								<li><a href="log-out">Đăng xuất</a></li>
-							</c:if>
-						</ul></li>
+							</c:if> --%>
+						</ul>
+					</li>
+					
 				</ul>
 			</div>
 			<!-- /.navbar-collapse -->
@@ -141,9 +156,11 @@
 				</form>
 			</div>
 
+			<c:set var="size" value="${sessionScope.size}"/>  
+			<!-- var="size" là biến để lấy dữ liệu ở dưới các thẻ, value="...size" là tên biến "size" lấy từ CartController -->
 			<div class="side-menu menu-right-row " style="margin-left: 8px;">
-				<a href="cart.html"> <i class="fa fa-shopping-bag"></i> <span
-					class="badge" style="font-size: 16px;">3</span>
+				<a href="cart"> <i class="fa fa-shopping-bag"></i> <span
+					class="badge" style="font-size: 16px;">(${size})</span>
 				</a>
 			</div>
 			<!-- End Atribute Navigation -->

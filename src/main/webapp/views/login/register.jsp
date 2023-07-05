@@ -38,7 +38,7 @@
                     </div>
 
                     <div id="field-gender" class="clearfix large_form">
-                        <input id="radio1" type="radio" value="nu" name="gender" /> 
+                        <input id="radio1" type="radio" value="nữ" name="gender" /> 
                         <label for="radio1">Nữ</label>
                         <input id="radio2" type="radio" value="nam" name="gender"/> 
                         <label for="radio2">Nam</label>

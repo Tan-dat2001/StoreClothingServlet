@@ -13,7 +13,6 @@ public class Product extends AbstractModel{
 	private int purchases;
 	private int quantity;
 	private String status;
-	
 	public Product() {
 	}
 	
@@ -46,6 +45,10 @@ public class Product extends AbstractModel{
 		this.quantity = quantity;
 		this.status = status;
 	}
+	
+	
+	
+
 	public int getProduct_id() {
 		return product_id;
 	}

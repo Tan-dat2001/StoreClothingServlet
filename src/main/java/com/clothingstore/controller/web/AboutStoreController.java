@@ -12,47 +12,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.clothingstore.model.Category;
-import com.clothingstore.model.Product;
 import com.clothingstore.service.impl.CategoryService;
 import com.clothingstore.service.impl.ProductService;
 
-@WebServlet(urlPatterns = "/web-home")
-public class HomeController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
+@WebServlet(urlPatterns = "/about-store")
+public class AboutStoreController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
 	@Inject
 	private CategoryService categoryService;
 
 	@Inject
-	private ProductService productService;
+	private ProductService productService;   
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public AboutStoreController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
 
-	public HomeController() {
-	}
-
-	protected void service(HttpServletRequest request, HttpServletResponse response)
-			throws SecurityException, IOException, ServletException {
-		request.setCharacterEncoding("UTF-8");
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Category> listCategoriesAo = categoryService.getCategoriesByWord("ao");
 		request.setAttribute("listCategoriesAo", listCategoriesAo);
 
 		List<Category> listCategoriesQuan = categoryService.getCategoriesByWord("quan");
 		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
-
-		List<Product> listProducts = productService.getAllProduct();
-		request.setAttribute("listProducts", listProducts);
 		
-		RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/views/web/aboutStore.jsp");
 		rd.forward(request, response);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
