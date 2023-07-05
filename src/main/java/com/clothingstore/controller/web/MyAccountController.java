@@ -45,8 +45,9 @@ public class MyAccountController extends HttpServlet {
 		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
 		
 		HttpSession session = request.getSession();
-		int accountId = Integer.parseInt(request.getParameter("accountId"));
-		Account account = accountService.getAccountById(accountId);
+//		int accountId = Integer.parseInt(request.getParameter("accountId"));
+//		Account account = accountService.getAccountById(accountId);
+		Account account = (Account)session.getAttribute("currentAccount");
 		session.setAttribute("name", account.getName());
 		session.setAttribute("email", account.getEmail());
 		session.setAttribute("gender", account.getGender());	

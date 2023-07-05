@@ -12,6 +12,8 @@
 	<%
 		HttpSession ss = request.getSession();
 		String currentPasswordInput = (String)ss.getAttribute("currentPasswordInput");
+		String name = (String)ss.getAttribute("name");
+		String email = (String)ss.getAttribute("email");
 	%>
     <div class="container">
         <div class="view-account">
@@ -20,8 +22,8 @@
                     <div class="side-bar">
                         <div class="user-info">
                             <ul class="meta list list-unstyled">
-                                <li class="name">Rebecca Sanders
-                                    <label class="label label-info">UX Designer</label>
+                                <li class="name">${name}
+                                    <label class="label label-info">${email}</label>
                                 </li>
                             </ul>
                         </div>

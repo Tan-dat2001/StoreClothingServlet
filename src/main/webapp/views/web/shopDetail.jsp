@@ -110,7 +110,7 @@
                                                         <ul>
                                                             <li><a href="#" data-toggle="tooltip" data-placement="right" title="Xem"><i class="fas fa-eye"></i></a></li>
                                                         </ul>
-                                                        <a class="cart" href="#">Thêm vào giỏ hàng</a>
+                                                        <a class="cart" href="addtocart?productId=${i.product_id}&quantity=1">Thêm vào giỏ hàng</a>
                                                     </div>
                                                 </div>
                                                 <div class="why-text truncate">
