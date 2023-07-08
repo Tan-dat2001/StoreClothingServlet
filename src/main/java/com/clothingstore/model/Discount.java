@@ -1,13 +1,14 @@
 package com.clothingstore.model;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Discount extends AbstractModel{
 	private int discount_id;
 	private String discountName;
-	private LocalDateTime discountStart;
-	private LocalDateTime discountEnd;
+	private Date discountStart;
+	private Date discountEnd;
 	private int quantity;
 	private float discountPrice;
 	private String discountCode;
@@ -17,7 +18,7 @@ public class Discount extends AbstractModel{
 	}
 	
 	
-	public Discount(int discount_id, String discountName, LocalDateTime discountStart, LocalDateTime discountEnd,
+	public Discount(int discount_id, String discountName, Date discountStart, Date discountEnd,
 			int quantity, float discountPrice, String discountCode, String status) {
 		this.discount_id = discount_id;
 		this.discountName = discountName;
@@ -33,7 +34,7 @@ public class Discount extends AbstractModel{
 
 
 	public Discount(Timestamp updateAt, String updateBy, Timestamp createAt, String createBy, int discount_id,
-			String discountName, LocalDateTime discountStart, LocalDateTime discountEnd, int quantity,
+			String discountName, Date discountStart, Date discountEnd, int quantity,
 			float discountPrice, String discountCode, String status) {
 		super(updateAt, updateBy, createAt, createBy);
 		this.discount_id = discount_id;
@@ -59,16 +60,16 @@ public class Discount extends AbstractModel{
 	public void setDiscountName(String discountName) {
 		this.discountName = discountName;
 	}
-	public LocalDateTime getDiscountStart() {
+	public Date getDiscountStart() {
 		return discountStart;
 	}
-	public void setDiscountStart(LocalDateTime discountStart) {
+	public void setDiscountStart(Date discountStart) {
 		this.discountStart = discountStart;
 	}
-	public LocalDateTime getDiscountEnd() {
+	public Date getDiscountEnd() {
 		return discountEnd;
 	}
-	public void setDiscountEnd(LocalDateTime discountEnd) {
+	public void setDiscountEnd(Date discountEnd) {
 		this.discountEnd = discountEnd;
 	}
 	public int getQuantity() {
@@ -95,6 +96,19 @@ public class Discount extends AbstractModel{
 	public void setStatus(String status) {
 		this.status = status;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Discount [discount_id=" + discount_id + ", discountName=" + discountName + ", discountStart="
+				+ discountStart + ", discountEnd=" + discountEnd + ", quantity=" + quantity + ", discountPrice="
+				+ discountPrice + ", discountCode=" + discountCode + ", status=" + status + ", getUpdateAt()="
+				+ getUpdateAt() + ", getUpdateBy()=" + getUpdateBy() + ", getCreateAt()=" + getCreateAt()
+				+ ", getCreateBy()=" + getCreateBy()  + "] \n";
+	}
+
+
+	
 	
 	
 	

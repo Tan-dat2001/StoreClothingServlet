@@ -55,4 +55,9 @@ public class AccountService implements IAccountService{
 		return accountDAO.checkLogin(username, password);
 	}
 
+	@Override
+	public Account findByEmailAndPasswordAndStatus(String email, String password, String status) {
+		return accountDAO.findByEmailAndPasswordAndStatus(email, password, status);
+	}
+
 }

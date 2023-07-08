@@ -375,7 +375,60 @@ public class AccountDAO extends AbstractDAO implements IAccountDAO {
 //		System.out.println(accountDAO.getAccountById(1).toString());
 //		System.out.println(accountDAO.getAllAccount());
 //		System.out.println(accountDAO.getAccountByEmail("bigboss@gmail.com"));
-		accountDAO.updateAccount(newAccount);
+//		accountDAO.updateAccount(newAccount);
+		System.out.println(accountDAO.findByEmailAndPasswordAndStatus("linh@gmail.com", "linhkhung", "enabled"));
+	}
+
+	@Override
+	public Account findByEmailAndPasswordAndStatus(String email, String password, String status) {
+		String sql = " select * from account where email=? and password=? and status=?";
+		Account account = null;
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet resultSet = null;
+		if (connection != null) {
+			try {
+				statement = connection.prepareStatement(sql);
+				statement.setString(1, email);
+				statement.setString(2, password);
+				statement.setString(3, status);
+				resultSet = statement.executeQuery();
+				while (resultSet.next()) {
+					int accountId = resultSet.getInt("account_id");
+					String name = resultSet.getString("name");
+					String role = resultSet.getString("role");
+					String gender = resultSet.getString("gender");
+					String address = resultSet.getString("address");
+					String phone = resultSet.getString("phone");
+					Date dateOfBirth = resultSet.getDate("dateofbirth");
+					Timestamp createAt = resultSet.getTimestamp("create_at");
+					String createBy = resultSet.getString("create_by");
+					Timestamp updateAt = resultSet.getTimestamp("update_at");
+					String updateBy = resultSet.getString("update_by");
+
+					account = new Account(updateAt, updateBy, createAt, createBy, accountId, email, password, name, role, status, gender, address, phone, dateOfBirth);
+					return account;
+				}
+			} catch (SQLException e) {
+				// TODO: handle exception
+				return null;
+			} finally {
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+					if (resultSet != null) {
+						resultSet.close();
+					}
+				} catch (SQLException e) {
+					return null;
+				}
+			}
+		}
+		return null;
 	}
 
 }

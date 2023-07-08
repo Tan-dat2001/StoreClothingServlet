@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.clothingstore.model.Category;
 import com.clothingstore.model.Product;
 import com.clothingstore.service.IProductService;
+import com.clothingstore.service.impl.CategoryService;
 
 @WebServlet(urlPatterns = "/get-amount")
 public class GetAmountController extends HttpServlet {
@@ -20,18 +22,37 @@ public class GetAmountController extends HttpServlet {
        
 	@Inject
 	private IProductService productService;
-   
+	@Inject
+	private CategoryService categoryService;
+
     public GetAmountController() {
         super();
     }
-
+//    protected void service(HttpServletRequest request, HttpServletResponse response)
+//			throws SecurityException, IOException, ServletException {
+//		request.setCharacterEncoding("UTF-8");
+//		List<Category> listCategoriesAo = categoryService.getCategoriesByWord("ao");
+//		request.setAttribute("listCategoriesAo", listCategoriesAo);
+//
+//		List<Category> listCategoriesQuan = categoryService.getCategoriesByWord("quan");
+//		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
+//
+//		RequestDispatcher rd = request.getRequestDispatcher("/views/web/shopDetail.jsp");
+//		rd.forward(request, response);
+//	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		List<Category> listCategoriesAo = categoryService.getCategoriesByWord("ao");
+		request.setAttribute("listCategoriesAo", listCategoriesAo);
+
+		List<Category> listCategoriesQuan = categoryService.getCategoriesByWord("quan");
+		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
+		//////////////////////////////////////////////////////////////
 			String amount =  request.getParameter("amount");
 			System.out.println(amount);
 			// Loại bỏ ký tự "d" và khoảng trắng trong chuỗi

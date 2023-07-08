@@ -14,14 +14,17 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.clothingstore.model.Cart;
+import com.clothingstore.model.Category;
 import com.clothingstore.model.Item;
 import com.clothingstore.model.Product;
 import com.clothingstore.service.IProductService;
+import com.clothingstore.service.impl.CategoryService;
 
 @WebServlet(urlPatterns = "/cart")
 public class CartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	@Inject
+	private CategoryService categoryService;
 	
 	public CartController() {
 		super();
@@ -29,6 +32,11 @@ public class CartController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		List<Category> listCategoriesAo = categoryService.getCategoriesByWord("ao");
+		request.setAttribute("listCategoriesAo", listCategoriesAo);
+
+		List<Category> listCategoriesQuan = categoryService.getCategoriesByWord("quan");
+		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/cart.jsp");
 		rd.forward(request, response);
 	}

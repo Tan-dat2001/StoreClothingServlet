@@ -20,4 +20,7 @@ public interface IAccountService {
 	void deleteAccount(int accountId);
 
 	boolean checkLogin(String username, String password);
+	
+	Account findByEmailAndPasswordAndStatus(String email, String password, String status);
+
 }

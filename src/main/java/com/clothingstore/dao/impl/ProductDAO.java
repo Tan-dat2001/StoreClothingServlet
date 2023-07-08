@@ -178,8 +178,8 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 	public void createProduct(Product product) {
 		// Bc product_id is auto_increment so we don't need to insert product_id in
 		// query sentence.
-		String sql = "insert into product(category_id, discount_id, product_name, product_desc, product_price, product_image, purchases, quantity)"
-				+ " values(?, ?, ?, ?, ?, ?, ?, ?)";
+		String sql = "insert into product(category_id, discount_id, product_name, product_desc, product_price, product_image, quantity)"
+				+ " values(?, ?, ?, ?, ?, ?, ?)";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		if (connection != null) {
@@ -191,8 +191,7 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 				statement.setString(4, product.getProductDesc());
 				statement.setFloat(5, product.getProductPrice());
 				statement.setString(6, product.getProductImage());
-				statement.setInt(7, product.getPurchases());
-				statement.setInt(8, product.getQuantity());
+				statement.setInt(7, product.getQuantity());
 				statement.executeUpdate(); // Thực thi câu query
 
 				// Lấy giá trị product_id được tự động tạo/tăng
@@ -222,7 +221,7 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 	@Override
 	public void updateProduct(Product product) {
 		String sql = "update product set category_id=?, discount_id=?, product_name=?, product_desc=?, "
-				+ "product_price=?, product_image=?, purchases=?, quantity=?, status=? where product_id=?";
+				+ "product_price=?, product_image=?, quantity=?, status=? where product_id=?";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		if (connection != null) {
@@ -234,10 +233,9 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 				statement.setString(4, product.getProductDesc());
 				statement.setFloat(5, product.getProductPrice());
 				statement.setString(6, product.getProductImage());
-				statement.setInt(7, product.getPurchases());
-				statement.setInt(8, product.getQuantity());
-				statement.setString(9, product.getStatus());
-				statement.setInt(10, product.getProduct_id());
+				statement.setInt(7, product.getQuantity());
+				statement.setString(8, product.getStatus());
+				statement.setInt(9, product.getProduct_id());
 				statement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -392,24 +390,23 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 	public static void main(String[] args) {
 		ProductDAO productDAO = new ProductDAO();
 		Product product = new Product();
-//		product.setCategory_id(1);
-//		product.setDiscount_id(1);
-//		product.setProductName("Áo sơ mi Torano");
-//		product.setProductDesc("Co giãn tốt, chất liệu vải thiên nhiên");
-//		product.setProductPrice(5555000);
-//		product.setProductImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ2PrKjcquzshqyA5UrJOpc-RelJUchBPxeIOiuqk&s");
-//		product.setPurchases(25);
-//		product.setQuantity(250);
-//		product.setStatus("enabled");
+		product.setCategory_id(1);
+		product.setDiscount_id(1);
+		product.setProductName("Áo sơ mi Torano ABCDXYZ");
+		product.setProductDesc("Co giãn tốt, chất liệu vải thiên nhiên");
+		product.setProductPrice(5555000);
+		product.setProductImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQ2PrKjcquzshqyA5UrJOpc-RelJUchBPxeIOiuqk&s");
+		product.setQuantity(250);
+		product.setStatus("enabled");
 //		product.setProduct_id(54);
-//		productDAO.createProduct(product);
+		productDAO.createProduct(product);
 //		System.out.println(productDAO.getAllProduct().toString());
-		System.out.println(productDAO.getProductById(1));
+//		System.out.println(productDAO.getProductById(1));
 //		System.out.println(productDAO.getProductByCategoryId(2));
 //		System.out.println(productDAO.getProductByPriceRange(500000, 1000000));
 //		productDAO.updateProduct(product);
 //		productDAO.deleteProduct(53);
-		System.out.println(productDAO.searchProduct("ao"));
+//		System.out.println(productDAO.searchProduct("ao"));
 		
 	}
 }

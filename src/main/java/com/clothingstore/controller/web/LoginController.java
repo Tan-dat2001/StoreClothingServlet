@@ -52,16 +52,26 @@ public class LoginController extends HttpServlet {
 		boolean isValid = accountService.checkLogin(email, password);
 		System.out.println("xuat isValid" + isValid);
 		if(isValid) {
-			
+					
 			Account account = accountService.getAccountByEmail(email);
 			session.setAttribute("currentAccount", account);
 			session.setAttribute("email", email);
 			session.setAttribute("name", account.getName());
 			session.setAttribute("accountId", account.getAccount_id());
 			System.out.println(account.getAccount_id());
-			RequestDispatcher rd = request.getRequestDispatcher("views/web/home.jsp");
-			rd.forward(request, response);
-			response.sendRedirect("web-home");
+			if(account.getRole().equalsIgnoreCase("user") && account.getStatus().equalsIgnoreCase("enabled")) {
+				RequestDispatcher rd = request.getRequestDispatcher("views/web/home.jsp");
+				rd.forward(request, response);
+				response.sendRedirect("web-home");				
+			}else if(account.getRole().equalsIgnoreCase("admin") && account.getStatus().equalsIgnoreCase("enabled")) {
+//				RequestDispatcher rd = request.getRequestDispatcher("views/web/adminHome.jsp");
+//				rd.forward(request, response);
+				
+				response.sendRedirect(request.getContextPath() + "/admin-home");		
+			}else {
+				RequestDispatcher rq = request.getRequestDispatcher("views/login/login.jsp");
+				rq.forward(request, response);
+			}
 		}else {
 			
 			session.setAttribute("errorMessage"," Đăng nhập thất bại! Vui lòng kiểm tra lại email và mật khẩu.");			 		
