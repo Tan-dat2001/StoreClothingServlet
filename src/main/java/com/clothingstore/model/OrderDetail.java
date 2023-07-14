@@ -79,6 +79,12 @@ public class OrderDetail extends AbstractModel{
 	public void setTotalAmount(float totalAmount) {
 		this.totalAmount = totalAmount;
 	}
+	@Override
+	public String toString() {
+		return "OrderDetail [orderDetail_id=" + orderDetail_id + ", product_id=" + product_id + ", order_id=" + order_id
+				+ ", discountCode=" + discountCode + ", price=" + price + ", quantity=" + quantity + ", totalAmount="
+				+ totalAmount + "]\n";
+	}
 	
 	
 }

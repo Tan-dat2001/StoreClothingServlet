@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class AbstractDAO {
 	public Connection getConnection() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver"); // load driver
+			Class.forName("com.mysql.cj.jdbc.Driver"); // load driver
 			String url = "jdbc:mysql://localhost:3306/clothes_ecom";
 			String user = "root";
 			String password = "280412092312";

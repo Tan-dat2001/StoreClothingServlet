@@ -20,4 +20,9 @@ public interface IProductService {
 	void deleteProduct(int productId); //done
 	
 	List<Product> searchProduct(String keyword); //done
+	
+	List<Product> pagingProduct(int index); //done
+	
+	List<Product> getProductByOrderId(int orderId);
+
 }

@@ -7,8 +7,10 @@ import com.clothingstore.model.Cart;
 import com.clothingstore.model.Order;
 
 public interface IOrderDAO {
-
+	//show in admin
 	List<Order> getAllOrder();
+	//show in user
+	List<Order> getAllOrderByAccountId(int accountId);
 	
 	Order getOrderById(int orderId);
 	

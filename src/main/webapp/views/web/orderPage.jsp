@@ -16,6 +16,7 @@
 	HttpSession ss = request.getSession();
 	String name = (String) ss.getAttribute("name");
 	String email = (String) ss.getAttribute("email");
+	float total = (Float)ss.getAttribute("total");
 	%>
 	<div class="container">
 		<div class="view-account">
@@ -41,135 +42,53 @@
 						</nav>
 					</div>
 					<div class="content-panel">
-						<div class="bg-white card mb-4 order-list shadow-sm">
-							<div class="gold-members p-4">
-								<a href="#"> </a>
-								<div class="media">
-									<a href="#"> <img class="mr-4" src="images/aothun1.jpg"
-										alt="Generic placeholder image">
-									</a>
-									<div class="media-body">
-										<a href="#"> <span class="float-right text-info">Delivered
-												on Mon, Nov 12, 7:18 PM <i
-												class="icofont-check-circled text-success"></i>
-										</span>
-										</a>
-										<h6 class="mb-2">
-											<a href="#"></a> <a href="#" class="text-black">Gus's
-												World Famous Fried Chicken</a>
-										</h6>
-										<p class="text-gray mb-1">
-											<i class="icofont-location-arrow"></i> 730 S Mendenhall Rd,
-											Memphis, TN 38117, USA
-										</p>
-										<p class="text-gray mb-3">
-											<i class="icofont-list"></i> ORDER #25102589748 <i
-												class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM
-										</p>
-										<p class="text-dark">Veg Masala Roll x 1, Veg Burger x 1,
-											Veg Penne Pasta in Red Sauce x 1</p>
-										<hr>
-										<div class="float-right">
-											<a class="btn btn-sm btn-outline-primary" href="#"><i
-												class="icofont-headphone-alt"></i> HELP</a> <a
-												class="btn btn-sm btn-primary" href="#"><i
-												class="icofont-refresh"></i> REORDER</a>
+						<c:forEach var="o" items="${listOrders}">
+							<c:set var="info" value="${infoDelivery}" />
+								<div class="bg-white card mb-4 order-list shadow-sm">
+									<div class="gold-members p-4">
+										<a href="#"> </a>
+										<div class="media">
+											<a href="#"> <img class="mr-4" src="images/aothun1.jpg"
+												alt="Generic placeholder image">
+											</a>
+											<div class="media-body">
+												<!-- <a href="#"> <span class="float-right text-info">Delivered
+														on Mon, Nov 12, 7:18 PM <i
+														class="icofont-check-circled text-success"></i>
+												</span> 
+												</a> -->
+												<h3 class="mb-2" style="font-weight:bold;"> Người nhận: ${info.name }</h3>
+												<p class="mb-2">Số điện thoại: ${info.phone}</p>
+												<p class=" mb-1"><i class="icofont-location-arrow"></i> 
+													Địa chỉ: ${info.address}
+												</p>
+												<p class=" mb-3">
+													<i class="icofont-list"></i> Mã đơn hàng: #${o.order_id} <i
+														class="icofont-clock-time ml-2"></i> <br> Ngày đặt hàng: ${o.orderDate}
+												</p>
+												<%-- <c:set var="num" value="0" />
+												<c:forEach var="p" items="${listProducts}">
+													<c:set var="num" value="${num+1}" />
+													<p class="text-dark">${num}. ${p.productName}</p>
+												</c:forEach> --%>
+												
+												<hr>
+												<div class="float-right">
+													<a class="btn btn-sm btn-outline-primary" href="orderDetail-page?orderId=${o.order_id}"><i
+														class="icofont-headphone-alt"></i> Xem chi tiết</a> 
+													<!-- <a	class="btn btn-sm btn-primary" href="#"><i
+														class="icofont-refresh"></i> Mua Lại</a> -->
+												</div>
+												<p class="mb-0 text-black text-primary pt-2">
+													<span class="text-black font-weight-bold"> Tổng thanh toán: ${o.totalAmount} đ</span>
+													
+												</p>
+											</div>
 										</div>
-										<p class="mb-0 text-black text-primary pt-2">
-											<span class="text-black font-weight-bold"> Total Paid:</span>
-											$300
-										</p>
 									</div>
 								</div>
-
-							</div>
-						</div>
-						<div class="bg-white card mb-4 order-list shadow-sm">
-							<div class="gold-members p-4">
-								<a href="#"> </a>
-								<div class="media">
-									<a href="#"> <img class="mr-4" src="images/aothun1.jpg"
-										alt="Generic placeholder image">
-									</a>
-									<div class="media-body">
-										<a href="#"> <span class="float-right text-info">Delivered
-												on Mon, Nov 12, 7:18 PM <i
-												class="icofont-check-circled text-success"></i>
-										</span>
-										</a>
-										<h6 class="mb-2">
-											<a href="#"></a> <a href="#" class="text-black">Gus's
-												World Famous Fried Chicken</a>
-										</h6>
-										<p class="text-gray mb-1">
-											<i class="icofont-location-arrow"></i> 730 S Mendenhall Rd,
-											Memphis, TN 38117, USA
-										</p>
-										<p class="text-gray mb-3">
-											<i class="icofont-list"></i> ORDER #25102589748 <i
-												class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM
-										</p>
-										<p class="text-dark">Veg Masala Roll x 1, Veg Burger x 1,
-											Veg Penne Pasta in Red Sauce x 1</p>
-										<hr>
-										<div class="float-right">
-											<a class="btn btn-sm btn-outline-primary" href="#"><i
-												class="icofont-headphone-alt"></i> HELP</a> <a
-												class="btn btn-sm btn-primary" href="#"><i
-												class="icofont-refresh"></i> REORDER</a>
-										</div>
-										<p class="mb-0 text-black text-primary pt-2">
-											<span class="text-black font-weight-bold"> Total Paid:</span>
-											$300
-										</p>
-									</div>
-								</div>
-
-							</div>
-						</div>
-						<div class="bg-white card mb-4 order-list shadow-sm">
-							<div class="gold-members p-4">
-								<a href="#"> </a>
-								<div class="media">
-									<a href="#"> <img class="mr-4" src="images/aothun1.jpg"
-										alt="Generic placeholder image">
-									</a>
-									<div class="media-body">
-										<a href="#"> <span class="float-right text-info">Delivered
-												on Mon, Nov 12, 7:18 PM <i
-												class="icofont-check-circled text-success"></i>
-										</span>
-										</a>
-										<h6 class="mb-2">
-											<a href="#"></a> <a href="#" class="text-black">Gus's
-												World Famous Fried Chicken</a>
-										</h6>
-										<p class="text-gray mb-1">
-											<i class="icofont-location-arrow"></i> 730 S Mendenhall Rd,
-											Memphis, TN 38117, USA
-										</p>
-										<p class="text-gray mb-3">
-											<i class="icofont-list"></i> ORDER #25102589748 <i
-												class="icofont-clock-time ml-2"></i> Mon, Nov 12, 6:26 PM
-										</p>
-										<p class="text-dark">Veg Masala Roll x 1, Veg Burger x 1,
-											Veg Penne Pasta in Red Sauce x 1</p>
-										<hr>
-										<div class="float-right">
-											<a class="btn btn-sm btn-outline-primary" href="#"><i
-												class="icofont-headphone-alt"></i> HELP</a> <a
-												class="btn btn-sm btn-primary" href="#"><i
-												class="icofont-refresh"></i> REORDER</a>
-										</div>
-										<p class="mb-0 text-black text-primary pt-2">
-											<span class="text-black font-weight-bold"> Total Paid:</span>
-											$300
-										</p>
-									</div>
-								</div>
-
-							</div>
-						</div>
+						</c:forEach>
+						
 					</div>
 				</div>
 			</section>

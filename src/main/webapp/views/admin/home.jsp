@@ -59,6 +59,14 @@
                 </table>
               </div>
             </div>
+          	<nav aria-label="Page navigation example"
+				style="display: flex; justify-content: center; margin-bottom: 30px;">
+				<ul class="pagination ">
+					<c:forEach var="i" begin="1" end="${endPage}">
+						<li class="page-item"><a class="page-link ${index == i ? 'active-pagination':''}" href="admin-home?index=${i}">${i}</a></li>
+					</c:forEach>
+				</ul>
+			</nav>
           </div>
         </div>
       </div>

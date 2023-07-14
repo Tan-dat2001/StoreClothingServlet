@@ -57,7 +57,7 @@
 									<c:forEach var="i" items="${o.items}">
 										<tr>
 											<td class="thumbnail-img thumbnail-img-custom"><a
-												href="#"> <img class="img-fluid"
+												href="product-detail?productId=${i.product.product_id}"> <img class="img-fluid"
 													src="${i.product.productImage}" alt="" />
 											</a></td>
 											<td class="name-pr"><a
@@ -68,16 +68,15 @@
 											<td class="price-pr"><p>${i.product.productPrice}đ</p></td>
 											<td class="quantity-box"
 												style="display: flex; justify-content: center; align-items: center; margin-top: 32px; border: none;">
-												<button>
-													<a href="process?num=-1&productId=${i.product.product_id}">-</a>
-												</button> <input type="text" value="${i.quantity}"
-												class="c-input-text qty text">
-												<button>
-													<a href="process?num=1&productId=${i.product.product_id}">+</a>
+												<button type="button">
+													<a href="processNum?num=-1&productId=${i.product.product_id}">-</a>
+												</button> 
+												<input type="text" value="${i.quantity}" class="c-input-text qty text">
+												<button type="button">
+													<a href="processNum?num=1&productId=${i.product.product_id}">+</a>
 												</button>
 											</td>
-											<td class="total-pr"><p>${i.product.productPrice*i.quantity}
-													đ</p></td>
+											<td class="total-pr"><p >${i.product.productPrice*i.quantity} đ</p></td>
 											<td class="remove-pr">
 												<a href="process?productId=${i.product.product_id}">
                                            			 <i class="fas fa-times"></i>
@@ -98,7 +97,7 @@
 								<input class="form-control" placeholder="Nhập mã giảm"
 									aria-label="Coupon code" type="text" name="discountCodeInput">
 								<div class="input-group-append">
-									<button class="btn btn-theme" type="button">Áp mã giảm</button>
+									<button class="btn btn-theme" type="button"><a>Áp mã giảm</a></button>
 								</div>
 							</div>
 						</div>
@@ -131,31 +130,22 @@
 										}
 									}
 									out.print(total + " đ");
+									session.setAttribute("total", total);
 									%>
 								</div>
 							</div>
-							<div class="d-flex">
+							<%-- <div class="d-flex">
 								<h4>Giảm giá</h4>
-								<div class="ml-auto font-weight-bold">$ 40</div>
+								<div class="ml-auto font-weight-bold"> 40đ</div>
 							</div>
 							<hr class="my-1">
-							<div class="d-flex">
-								<h4>Mã giảm</h4>
-								<div class="ml-auto font-weight-bold">$ 10</div>
-							</div>
-							<div class="d-flex">
-								<h4>Thuế</h4>
-								<div class="ml-auto font-weight-bold">$ 2</div>
-							</div>
-							<div class="d-flex">
-								<h4>Phí vận chuyển</h4>
-								<div class="ml-auto font-weight-bold">Free</div>
-							</div>
-							<hr>
+							
 							<div class="d-flex gr-total">
 								<h5>Tổng thanh toán</h5>
-								<div class="ml-auto h5">$ 388</div>
-							</div>
+								<div class="ml-auto h5">
+									<%out.print(total + " đ");%>
+								</div>
+							</div> --%>
 							<hr>
 						</div>
 					</div>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.clothingstore.dao.impl.ProductDAO;
 import com.clothingstore.model.Category;
 import com.clothingstore.model.Product;
 import com.clothingstore.service.impl.CategoryService;
@@ -37,9 +38,26 @@ public class HomeController extends HttpServlet {
 
 		List<Category> listCategoriesQuan = categoryService.getCategoriesByWord("quan");
 		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
-
-		List<Product> listProducts = productService.getAllProduct();
+		
+		//Phân trang
+		//lấy giá trị index của trang
+		String indexPage = request.getParameter("index");
+		if(indexPage == null ) {
+			indexPage = "1";
+		}
+		int index = Integer.parseInt(indexPage);
+		
+		ProductDAO productDAO = new ProductDAO();
+		int count = productDAO.getTotalProduct();
+		int endPage = count/20;
+		if(count % 20 != 0) {
+			endPage++;
+		}
+		request.setAttribute("endPage", endPage);
+		request.setAttribute("index", index);
+		List<Product> listProducts = productService.pagingProduct(index);
 		request.setAttribute("listProducts", listProducts);
+		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
 		rd.forward(request, response);

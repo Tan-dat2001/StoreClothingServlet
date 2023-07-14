@@ -9,6 +9,9 @@ public class Item {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	public float getTotalAmount() {
+		return quantity*price;
+	}
 	public Product getProduct() {
 		return product;
 	}

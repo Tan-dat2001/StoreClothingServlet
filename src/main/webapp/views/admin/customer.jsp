@@ -61,20 +61,23 @@
                   		int i=0;
                   		List<Account> accounts = (List<Account>)request.getAttribute("accounts");
                   		if(accounts != null){
-                  			for(Account account:accounts){%>
-                  			<tr>
-                  				<td><%=i+1 %></td>
-			                      <td><%=account.getAccount_id() %></td>
-			                      <td><%=account.getEmail() %></td>
-			                      <td><%=account.getName() %></td>
-			                      <td><%=account.getPassword()%></td>
-			                      <td><%=account.getPhone()%></td>
-			                      <td><%=account.getAddress()%></td>
-			                      <td><%=account.getDateOfBirth() %></td>
-			                      <td><%=account.getGender() %></td>
-			                      <td><%=account.getStatus() %></td>
-			                      <td><a href="#">XÓA</a>||<a href="#">SỬA</a></td>
-			                <tr>
+                  			for(Account account:accounts){
+                  				int accountId = account.getAccount_id();
+                  				%>
+	                  			<tr>
+	                  				<td><%=i+1 %></td>
+				                      <td><%=account.getAccount_id() %></td>
+				                      <td><%=account.getEmail() %></td>
+				                      <td><%=account.getName() %></td>
+				                      <td><%=account.getPassword()%></td>
+				                      <td><%=account.getPhone()%></td>
+				                      <td><%=account.getAddress()%></td>
+				                      <td><%=account.getDateOfBirth() %></td>
+				                      <td><%=account.getGender() %></td>
+				                      <td><%=account.getStatus() %></td>
+				                      <td><a href="admin-deleteAccount?accountId=<%= account.getAccount_id() %>">XÓA</a></td>
+				                      <%-- ||<a href="admin-editAccount?accountId=<%= account.getAccount_id() %>">SỬA</a> --%>
+				                <tr>
                   	<%		}
                   		}
                   	

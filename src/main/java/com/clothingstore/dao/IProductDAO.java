@@ -21,5 +21,7 @@ public interface IProductDAO {
 	
 	List<Product> searchProduct(String keyword); //done
 	
+	List<Product> pagingProduct(int index);
 	
+	List<Product> getProductByOrderId(int orderId);
 }

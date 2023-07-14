@@ -10,14 +10,15 @@ public class Order extends AbstractModel {
 	private int payment_id;
 	private int status_id;
 	private String paymentTransactionStatus;
-	private Timestamp orderDate;
+//	private Timestamp orderDate;
+	private LocalDateTime orderDate;
 	private String orderNote;
 	private float totalAmount;
 	public Order() {
 
 	}
 	public Order(int order_id, int account_id, int delivery_id, int payment_id, int status_id,
-			String paymentTransactionStatus, Timestamp orderDate, String orderNote, float totalAmount) {
+			String paymentTransactionStatus, LocalDateTime orderDate, String orderNote, float totalAmount) {
 
 		this.order_id = order_id;
 		this.account_id = account_id;
@@ -31,7 +32,7 @@ public class Order extends AbstractModel {
 	}
 	
 	public Order(Timestamp updateAt, String updateBy, Timestamp createAt, String createBy, int order_id, int account_id,
-			int delivery_id, int payment_id, int status_id, String paymentTransactionStatus, Timestamp orderDate,
+			int delivery_id, int payment_id, int status_id, String paymentTransactionStatus, LocalDateTime orderDate,
 			String orderNote, float totalAmount) {
 		super(updateAt, updateBy, createAt, createBy);
 		this.order_id = order_id;
@@ -80,10 +81,10 @@ public class Order extends AbstractModel {
 	public void setPaymentTransactionStatus(String paymentTransactionStatus) {
 		this.paymentTransactionStatus = paymentTransactionStatus;
 	}
-	public Timestamp getOrderDate() {
+	public LocalDateTime getOrderDate() {
 		return orderDate;
 	}
-	public void setOrderDate(Timestamp orderDate) {
+	public void setOrderDate(LocalDateTime orderDate) {
 		this.orderDate = orderDate;
 	}
 	public String getOrderNote() {

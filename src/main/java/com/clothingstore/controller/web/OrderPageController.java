@@ -1,6 +1,7 @@
 package com.clothingstore.controller.web;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,9 +11,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.clothingstore.dao.impl.InfoDAO;
+import com.clothingstore.model.Account;
 import com.clothingstore.model.Category;
+import com.clothingstore.model.InfoDelivery;
+import com.clothingstore.model.Order;
+import com.clothingstore.model.OrderDetail;
+import com.clothingstore.model.OrderStatus;
+import com.clothingstore.model.Product;
 import com.clothingstore.service.ICategoryService;
+import com.clothingstore.service.IOrderDetailService;
+import com.clothingstore.service.IOrderService;
+import com.clothingstore.service.IProductService;
 
 @WebServlet(urlPatterns = "/order-page")
 public class OrderPageController extends HttpServlet {
@@ -26,14 +38,32 @@ public class OrderPageController extends HttpServlet {
 
     @Inject
     private ICategoryService categoryService;
-   
-	
+    @Inject 
+    private IOrderService orderService;
+	@Inject
+	private IOrderDetailService orderDetailService;
+	@Inject
+	private IProductService productService;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Category> listCategoriesAo = categoryService.getCategoriesByWord("ao");
 		request.setAttribute("listCategoriesAo", listCategoriesAo);
 
 		List<Category> listCategoriesQuan = categoryService.getCategoriesByWord("quan");
 		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
+		
+		HttpSession session = request.getSession();
+		Account account = (Account)session.getAttribute("currentAccount");
+		InfoDAO infoDAO = new InfoDAO();
+		InfoDelivery infoDelivery = new InfoDelivery();
+		List<Order> listOrders = orderService.getAllOrderByAccountId(account.getAccount_id());
+		request.setAttribute("listOrders",listOrders);
+		
+		for(Order order:listOrders) {
+			List<OrderDetail> listOrderDetails = orderDetailService.getAllOrderDetailByOrderId(order.getOrder_id());			
+			request.setAttribute("listOrderDetails", listOrderDetails);
+			infoDelivery = infoDAO.getInfoDeliveryByOrderId(order.getOrder_id());
+			request.setAttribute("infoDelivery", infoDelivery);
+		}
 		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/orderPage.jsp");
@@ -42,8 +72,7 @@ public class OrderPageController extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
 	}
 
 }

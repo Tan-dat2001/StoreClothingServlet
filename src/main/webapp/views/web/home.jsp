@@ -78,7 +78,7 @@
 	<!-- End Slider -->
 
 	<!-- Start Categories  -->
-	<div class="categories-shop" style="background-color: #f5f5f5;">
+	<%-- <div class="categories-shop" style="background-color: #f5f5f5;">
 		<div class="container">
 			<h2 class="category-text">Danh mục sản phẩm</h2>
 			<div class="row">
@@ -121,7 +121,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> --%>
 	<!-- End Categories -->
 
 	<!-- Start All Products  -->
@@ -160,7 +160,7 @@
 								<div class="why-text">
 									<a href="product-detail?productId=${i.product_id}">
 										<h4>${i.productName}</h4>
-										<h5>${i.productPrice}đ</h5>
+										<h5><del style="font-size:12px; padding-right: 16px;">${i.productPrice * 1.2}</del>${i.productPrice}đ</h5>
 									</a>
 								</div>
 							</div>
@@ -176,12 +176,10 @@
 	</div>
 	<nav aria-label="Page navigation example"
 		style="display: flex; justify-content: center; margin-bottom: 30px;">
-		<ul class="pagination">
-			<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-			<li class="page-item"><a class="page-link" href="#">1</a></li>
-			<li class="page-item"><a class="page-link" href="#">2</a></li>
-			<li class="page-item"><a class="page-link" href="#">3</a></li>
-			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+		<ul class="pagination ">
+			<c:forEach var="i" begin="1" end="${endPage}">
+				<li class="page-item"><a class="page-link ${index == i ? 'active-pagination':''}" href="web-home?index=${i}">${i}</a></li>
+			</c:forEach>
 		</ul>
 	</nav>
 	<!-- End All Products  -->

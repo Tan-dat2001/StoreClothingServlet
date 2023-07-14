@@ -210,12 +210,12 @@ img.image-product{
   
 }
 
-  /* .product-categori-custom-parent{
-    position: relative;
-  }
-  .product-categori-custom-child{
-    position: fixed;
-    top: 0;
-    z-index: 1;  
-  } */
+.page-link{
+	color: #333;
+}
+.active-pagination{
+	font-weight: bold;
+    background-color: #f53f2d;
+    color : white;
+}
 

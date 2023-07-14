@@ -85,15 +85,16 @@
                             <li>
                                 <div class="form-group quantity-box">
                                     <label class="control-label">Số lượng</label>
-                                    <input class="form-control" value="0" min="0" max="" type="number" name="quantity">
+                                    <input class="form-control" value="0" min="0" max="${productDetail.quantity}" type="number" name="quantity" onchange="updateAddToCartLink(this)">
                                 </div>
                             </li>
                         </ul>
 
                         <div class="price-box-bar">
                             <div class="cart-and-bay-btn">
-                                <a class="btn hvr-hover" data-fancybox-close="" href="#">Mua Ngay</a>
-                                <a class="btn hvr-hover" data-fancybox-close="" href="addtocart?productId=${productDetail.product_id}&quantity=1">Thêm Vào Giỏ Hàng</a>
+                               <!--  <a class="btn hvr-hover" data-fancybox-close="" href="#">Mua Ngay</a> -->
+                                <a class="btn hvr-hover" data-fancybox-close="" id="addToCartLink" href="#">Thêm Vào Giỏ Hàng</a>
+                                <!-- addtocart?productId=${productDetail.product_id}&quantity=1 -->
                             </div>
                         </div>
 
@@ -102,7 +103,7 @@
                 </div>
             </div>
 
-            <div class="row my-5">
+            <%-- <div class="row my-5">
                 <div class="col-lg-12">
                     <div class="title-all text-center">
                         <h2 class="title-related-products" >Sản phẩm liên quan</h2>
@@ -132,13 +133,20 @@
                         
                     </div>
                 </div>
-            </div>
+            </div> --%>
 
         </div>
     </div>
     <!-- End Cart -->
     
         <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
-    
+    <script>
+    function updateAddToCartLink(input) {
+        var quantity = input.value;
+        var productId = ${productDetail.product_id};
+        var addToCartLink = document.getElementById("addToCartLink");
+        addToCartLink.href = "addtocart?productId=" + productId + "&quantity=" + quantity;
+    }
+</script>
 </body>
 </html>

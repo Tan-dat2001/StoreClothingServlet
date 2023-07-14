@@ -60,4 +60,15 @@ public class ProductService implements IProductService {
 		return productDAO.searchProduct(keyword);
 	}
 
+	@Override
+	public List<Product> pagingProduct(int index) {
+		return productDAO.pagingProduct(index);
+	}
+
+	@Override
+	public List<Product> getProductByOrderId(int orderId) {
+		// TODO Auto-generated method stub
+		return productDAO.getProductByOrderId(orderId);
+	}
+
 }
