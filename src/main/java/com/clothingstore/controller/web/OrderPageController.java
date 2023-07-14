@@ -53,18 +53,18 @@ public class OrderPageController extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Account account = (Account)session.getAttribute("currentAccount");
-		InfoDAO infoDAO = new InfoDAO();
-		InfoDelivery infoDelivery = new InfoDelivery();
 		List<Order> listOrders = orderService.getAllOrderByAccountId(account.getAccount_id());
 		request.setAttribute("listOrders",listOrders);
-		
+		List<InfoDelivery> infoDeliveries = new ArrayList<>();
+		InfoDelivery infoDelivery = new InfoDelivery();
+		InfoDAO infoDAO = new InfoDAO();
 		for(Order order:listOrders) {
 			List<OrderDetail> listOrderDetails = orderDetailService.getAllOrderDetailByOrderId(order.getOrder_id());			
 			request.setAttribute("listOrderDetails", listOrderDetails);
 			infoDelivery = infoDAO.getInfoDeliveryByOrderId(order.getOrder_id());
-			request.setAttribute("infoDelivery", infoDelivery);
+			infoDeliveries.add(infoDelivery);
+			request.setAttribute("infoDeliveries", infoDeliveries);
 		}
-		
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/orderPage.jsp");
 		rd.forward(request, response);

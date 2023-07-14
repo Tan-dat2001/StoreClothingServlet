@@ -43,34 +43,33 @@
 					</div>
 					<div class="content-panel">
 						<c:forEach var="o" items="${listOrders}">
-							<c:set var="info" value="${infoDelivery}" />
+<%-- 							<c:set var="info" value="${infoDelivery}" /> --%>
 								<div class="bg-white card mb-4 order-list shadow-sm">
 									<div class="gold-members p-4">
 										<a href="#"> </a>
 										<div class="media">
-											<a href="#"> <img class="mr-4" src="images/aothun1.jpg"
+											<!-- <a href="#"> <img class="mr-4" src="images/aothun1.jpg"
 												alt="Generic placeholder image">
-											</a>
+											</a> -->
 											<div class="media-body">
-												<!-- <a href="#"> <span class="float-right text-info">Delivered
-														on Mon, Nov 12, 7:18 PM <i
-														class="icofont-check-circled text-success"></i>
+												<a href="#"> 
+													<span class="float-right text-info">Mã đơn hàng: #${o.order_id} 
+													<i class="icofont-check-circled text-success"></i>
 												</span> 
-												</a> -->
-												<h3 class="mb-2" style="font-weight:bold;"> Người nhận: ${info.name }</h3>
-												<p class="mb-2">Số điện thoại: ${info.phone}</p>
-												<p class=" mb-1"><i class="icofont-location-arrow"></i> 
-													Địa chỉ: ${info.address}
-												</p>
+												</a>
+												<c:forEach var="info" items="${infoDeliveries}">
+													<c:if test="${o.order_id == info.orderId }">
+														<h3 class="mb-2" style="font-weight:bold;"> Người nhận: ${info.name }</h3>
+														<p class="mb-2">Số điện thoại: ${info.phone}</p>
+														<p class=" mb-1"><i class="icofont-location-arrow"></i> 
+															Địa chỉ: ${info.address}
+														</p>
+													</c:if>
+												</c:forEach>
+												
 												<p class=" mb-3">
-													<i class="icofont-list"></i> Mã đơn hàng: #${o.order_id} <i
-														class="icofont-clock-time ml-2"></i> <br> Ngày đặt hàng: ${o.orderDate}
+													Ngày đặt hàng: ${o.orderDate}
 												</p>
-												<%-- <c:set var="num" value="0" />
-												<c:forEach var="p" items="${listProducts}">
-													<c:set var="num" value="${num+1}" />
-													<p class="text-dark">${num}. ${p.productName}</p>
-												</c:forEach> --%>
 												
 												<hr>
 												<div class="float-right">
@@ -80,7 +79,7 @@
 														class="icofont-refresh"></i> Mua Lại</a> -->
 												</div>
 												<p class="mb-0 text-black text-primary pt-2">
-													<span class="text-black font-weight-bold"> Tổng thanh toán: ${o.totalAmount} đ</span>
+													<span class="text-black font-weight-bold" style="color:#f37a27;"> Tổng thanh toán: ${o.totalAmount} đ</span>
 													
 												</p>
 											</div>
