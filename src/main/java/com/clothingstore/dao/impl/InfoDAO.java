@@ -136,4 +136,30 @@ public class InfoDAO extends AbstractDAO {
 			}
 		}
 	}
+	
+	public void deleteInfoDelivery(int orderId) {
+		String sql = "delete from info_delivery where order_id=?";
+		Connection connection = getConnection();
+		PreparedStatement statement =null;
+		if(connection != null) {
+			try {
+				statement = connection.prepareStatement(sql);
+				statement.setInt(1, orderId);
+				statement.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if (connection != null) {
+						connection.close();
+					}
+					if (statement != null) {
+						statement.close();
+					}
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 }

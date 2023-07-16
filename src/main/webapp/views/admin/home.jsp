@@ -28,12 +28,12 @@
                   <thead>
                     <tr>
                       <th class="col-custom">ID</th>
-                      <th class="col-custom">Tên Sản phẩm</th>
+                      <th class="col-custom" style="min-width:200px;">Tên Sản phẩm</th>
                       <th class="col-custom">Loại sản phẩm</th>
                       <th class="col-custom">Số lượng trong kho</th>
                       <th class="col-custom">Đã bán</th>
-                      <th class="col-custom">Mô Tả</th>
-                      <th class="col-custom">Hình ảnh</th>
+                      <th class="col-custom" style="min-width:500px;">Mô Tả</th>
+                      <th class="col-custom" >Hình ảnh</th>
                       <th class="col-custom">Mã Giảm giá</th>
                       <th class="col-custom">Trạng thái</th>
                       <th class="col-custom">Tác Vụ</th>
@@ -48,7 +48,7 @@
 	                      <td>${product.quantity - product.purchases}</td>
 	                      <td>${product.purchases }</td>
 	                      <td>${product.productDesc }</td>
-	                      <td>${product.productImage }</td>
+	                      <td style="word-wrap: break-word; max-width:600px;">${product.productImage }</td>
 	                      <td>${product.discount_id }</td>
 	                      <td>${product.status }</td>
 	                      <td> <a href="admin-delete?productId=${product.product_id}">XÓA</a>||<a href="admin-editProduct?productId=${product.product_id}">SỬA</a></td>

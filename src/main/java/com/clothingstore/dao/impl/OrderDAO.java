@@ -48,7 +48,7 @@ public class OrderDAO extends AbstractDAO implements IOrderDAO {
 					String createBy = resultSet.getString("create_by");
 					Timestamp updateAt = resultSet.getTimestamp("update_at");
 					String updateBy = resultSet.getString("update_by");
-					order = new Order(updateAt, updateBy, createAt, createBy, orderId, accountId, deliveryId, paymentId, statusId, paymentTransaction, orderDate, orderNote, statusId);
+					order = new Order(updateAt, updateBy, createAt, createBy, orderId, accountId, deliveryId, paymentId, statusId, paymentTransaction, orderDate, orderNote, totalAmount);
 					results.add(order);
 				}
 				return results;
@@ -130,14 +130,15 @@ public class OrderDAO extends AbstractDAO implements IOrderDAO {
 
 	@Override
 	public void updateOrder(Order order) {
-		String sql = "update order set status_id=? where order_id=? ";
+		String sql = "update orderclothes set status_id=?, payment_transaction=? where order_id=? ";
 		Connection connection = getConnection();
 		PreparedStatement statement = null;
 		if(connection != null) {
 			try {
 				statement = connection.prepareStatement(sql);
-				statement.setInt(1, order.getOrder_id());
-				statement.setInt(2, order.getOrder_id());
+				statement.setInt(1, order.getStatus_id());
+				statement.setString(2, order.getPaymentTransactionStatus());
+				statement.setInt(3, order.getOrder_id());
 				statement.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -160,6 +161,8 @@ public class OrderDAO extends AbstractDAO implements IOrderDAO {
 	@Override
 	public void deleteOrder(int orderId) {
 		OrderDetailDAO orderDetailDAO = new OrderDetailDAO();
+		InfoDAO infoDAO = new InfoDAO();
+		infoDAO.deleteInfoDelivery(orderId);
 		orderDetailDAO.deleteOrderDetail(orderId);
 		String sql = "delete from orderclothes where order_id=?";
 		Connection connection = getConnection();
@@ -266,7 +269,7 @@ public class OrderDAO extends AbstractDAO implements IOrderDAO {
 		Account account = new Account(16, "linh@gmail.com", "linhdien","linh123", "user", "enabled", "nữ", "fptsoft", null, null);
 		Order order = new Order(0, 16, 1, 1, 1, "unpaid", java.time.LocalDateTime.now(), "fptsoft", 5000);
 //		orderDAO.addOrder(account, cart, order);
-		orderDAO.deleteOrder(30);
+		orderDAO.deleteOrder(42);
 		
 	}
 

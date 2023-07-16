@@ -23,5 +23,5 @@ public interface IProductDAO {
 	
 	List<Product> pagingProduct(int index);
 	
-	List<Product> getProductByOrderId(int orderId);
+	
 }

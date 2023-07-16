@@ -23,6 +23,6 @@ public interface IProductService {
 	
 	List<Product> pagingProduct(int index); //done
 	
-	List<Product> getProductByOrderId(int orderId);
+
 
 }

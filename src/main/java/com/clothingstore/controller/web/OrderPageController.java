@@ -20,10 +20,13 @@ import com.clothingstore.model.InfoDelivery;
 import com.clothingstore.model.Order;
 import com.clothingstore.model.OrderDetail;
 import com.clothingstore.model.OrderStatus;
+import com.clothingstore.model.PaymentMethod;
 import com.clothingstore.model.Product;
 import com.clothingstore.service.ICategoryService;
 import com.clothingstore.service.IOrderDetailService;
 import com.clothingstore.service.IOrderService;
+import com.clothingstore.service.IOrderStatusService;
+import com.clothingstore.service.IPaymentMethodService;
 import com.clothingstore.service.IProductService;
 
 @WebServlet(urlPatterns = "/order-page")
@@ -44,6 +47,8 @@ public class OrderPageController extends HttpServlet {
 	private IOrderDetailService orderDetailService;
 	@Inject
 	private IProductService productService;
+	@Inject
+	private IOrderStatusService orderStatusService;
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Category> listCategoriesAo = categoryService.getCategoriesByWord("ao");
 		request.setAttribute("listCategoriesAo", listCategoriesAo);
@@ -58,12 +63,18 @@ public class OrderPageController extends HttpServlet {
 		List<InfoDelivery> infoDeliveries = new ArrayList<>();
 		InfoDelivery infoDelivery = new InfoDelivery();
 		InfoDAO infoDAO = new InfoDAO();
+		List<OrderStatus> listOrderStatus = new ArrayList<>();
 		for(Order order:listOrders) {
 			List<OrderDetail> listOrderDetails = orderDetailService.getAllOrderDetailByOrderId(order.getOrder_id());			
 			request.setAttribute("listOrderDetails", listOrderDetails);
+			//Lấy thông tin vận chuyển
 			infoDelivery = infoDAO.getInfoDeliveryByOrderId(order.getOrder_id());
 			infoDeliveries.add(infoDelivery);
 			request.setAttribute("infoDeliveries", infoDeliveries);
+			//Lấy thông tin trạng thái đơn hàng
+			OrderStatus orderStatus = orderStatusService.getOneOrderStatusById(order.getStatus_id());
+			listOrderStatus.add(orderStatus);
+			request.setAttribute("listOrderStatus", listOrderStatus);
 		}
 		
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/orderPage.jsp");

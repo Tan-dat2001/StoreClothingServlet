@@ -485,63 +485,6 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 		
 	}
 
-	//Lỗi. --> bỏ
-	@Override
-	public List<Product> getProductByOrderId(int orderId) {
-		List<Product> results = new ArrayList<>();
-		Product product = null;
-		String sql = "select p.* from product p "
-				+ "join order_detail od on p.product_id = od.product_id"
-				+ "where od.order_id = ?";
-		Connection connection = getConnection();
-		PreparedStatement statement = null;
-		ResultSet resultSet = null;
-		if (connection != null) {
-			try {
-				statement = connection.prepareStatement(sql);
-				statement.setInt(1, orderId);
-				resultSet = statement.executeQuery();
-				while (resultSet.next()) {
-					int product_id = resultSet.getInt("product_id");
-					int category_id = resultSet.getInt("category_id");
-					int discount_id = resultSet.getInt("discount_id");
-					String product_name = resultSet.getString("product_name");
-					String product_desc = resultSet.getString("product_desc");
-					float product_price = resultSet.getFloat("product_price");
-					String product_image = resultSet.getString("product_image");
-					int purchases = resultSet.getInt("purchases");
-					int quantity = resultSet.getInt("quantity");
-					String status = resultSet.getString("status");
-					Timestamp createAt = resultSet.getTimestamp("create_at");
-					String createBy = resultSet.getString("create_by");
-					Timestamp updateAt = resultSet.getTimestamp("update_at");
-					String updateBy = resultSet.getString("update_by");
-					product = new Product(updateAt, updateBy, createAt, createBy, product_id, category_id,
-							discount_id, product_name, product_desc, product_price, product_image, purchases, quantity,
-							status);
-					results.add(product);
-				}
-				return results;
-			} catch (SQLException e) {
-				return null;
-			} finally {
-				try {
-					if (connection != null) {
-						connection.close();
-					}
-					if (statement != null) {
-						statement.close();
-					}
-					if (resultSet != null) {
-						resultSet.close();
-					}
-				} catch (SQLException e) {
-					return null;
-				}
-			}
-		}
-		return null;
-	}
 	
 	public static void main(String[] args) {
 		ProductDAO productDAO = new ProductDAO();
@@ -566,6 +509,6 @@ public class ProductDAO extends AbstractDAO implements IProductDAO {
 //		int count = productDAO.getTotalProduct();
 //		System.out.println(count);
 //		System.out.println(productDAO.pagingProduct(3).toString());
-		System.out.println(productDAO.getProductByOrderId(40));
+
 	}
 }

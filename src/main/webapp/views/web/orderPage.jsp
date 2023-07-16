@@ -25,12 +25,12 @@
 					<div class="side-bar">
 						<div class="user-info">
 							<ul class="meta list list-unstyled">
-								<li class="name">${name} <label
+								<li class="name" style="color: #000">${name} <label
 									class="label label-info">${email}</label>
 								</li>
 							</ul>
 						</div>
-						<nav class="side-menu">
+						<nav class="side-menu" >
 							<ul class="nav">
 								<li class="active"><a href="my-account"><span
 										class="fa fa-user"></span> Hồ sơ</a></li>
@@ -60,17 +60,29 @@
 												<c:forEach var="info" items="${infoDeliveries}">
 													<c:if test="${o.order_id == info.orderId }">
 														<h3 class="mb-2" style="font-weight:bold;"> Người nhận: ${info.name }</h3>
-														<p class="mb-2">Số điện thoại: ${info.phone}</p>
+														<p class="mb-1">Số điện thoại: ${info.phone}</p>
 														<p class=" mb-1"><i class="icofont-location-arrow"></i> 
 															Địa chỉ: ${info.address}
 														</p>
 													</c:if>
 												</c:forEach>
 												
-												<p class=" mb-3">
-													Ngày đặt hàng: ${o.orderDate}
-												</p>
+												<p class=" mb-1">Ngày đặt hàng: ${o.orderDate}</p>
+												<div class="row">
+													<div class="col-6">
+														<p class="mb-1">Thanh toán: <span class="text-danger">${o.paymentTransactionStatus}</span></p>												
+													</div>
+													<div class="col-6 text-right">
+														<c:forEach var="st" items="${listOrderStatus}">
+															<c:if test="${st.status_id == o.status_id}">
+																<c:set  var="status" value="${st.statusName }" />
+															</c:if>
+														</c:forEach>
+														<p class="mb-1 ">Trạng thái: <span class="text-danger">${status}</span></p>												
+													</div>
+												</div>
 												
+													
 												<hr>
 												<div class="float-right">
 													<a class="btn btn-sm btn-outline-primary" href="orderDetail-page?orderId=${o.order_id}"><i

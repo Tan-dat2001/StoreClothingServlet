@@ -318,4 +318,34 @@
     <servlet-name>OrderDetailPageController</servlet-name>
     <url-pattern>/OrderDetailPageController</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ShowOrderDetailController</display-name>
+    <servlet-name>ShowOrderDetailController</servlet-name>
+    <servlet-class>com.clothingstore.controller.admin.ShowOrderDetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ShowOrderDetailController</servlet-name>
+    <url-pattern>/ShowOrderDetailController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>DeleteOrderController</display-name>
+    <servlet-name>DeleteOrderController</servlet-name>
+    <servlet-class>com.clothingstore.controller.admin.DeleteOrderController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DeleteOrderController</servlet-name>
+    <url-pattern>/DeleteOrderController</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>EditOrderController</display-name>
+    <servlet-name>EditOrderController</servlet-name>
+    <servlet-class>com.clothingstore.controller.admin.EditOrderController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>EditOrderController</servlet-name>
+    <url-pattern>/EditOrderController</url-pattern>
+  </servlet-mapping>
 </web-app>
