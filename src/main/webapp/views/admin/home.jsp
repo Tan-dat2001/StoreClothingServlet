@@ -45,7 +45,7 @@
 	                      <td>${product.product_id}</td>
 	                      <td>${product.productName}</td>
 	                      <td>${product.category_id}</td>
-	                      <td>${product.quantity - product.purchases}</td>
+	                      <td>${product.quantity}</td>
 	                      <td>${product.purchases }</td>
 	                      <td>${product.productDesc }</td>
 	                      <td style="word-wrap: break-word; max-width:600px;">${product.productImage }</td>

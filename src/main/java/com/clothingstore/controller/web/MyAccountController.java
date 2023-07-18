@@ -45,18 +45,17 @@ public class MyAccountController extends HttpServlet {
 		request.setAttribute("listCategoriesQuan", listCategoriesQuan);
 		
 		HttpSession session = request.getSession();
-//		int accountId = Integer.parseInt(request.getParameter("accountId"));
-//		Account account = accountService.getAccountById(accountId);
 		Account account = (Account)session.getAttribute("currentAccount");
 		session.setAttribute("name", account.getName());
 		session.setAttribute("email", account.getEmail());
 		session.setAttribute("gender", account.getGender());	
 		session.setAttribute("address", account.getAddress());
 		session.setAttribute("phone", account.getPhone());
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		String dateOfBirthString = sdf.format(account.getDateOfBirth()); // dateOfBirth là kiểu java.sql.Date
-		session.setAttribute("dateOfBirth", dateOfBirthString);
-//		session.setAttribute("dateOfBirth", account.getDateOfBirth());
+		if(account.getDateOfBirth() != null) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String dateOfBirthString = sdf.format(account.getDateOfBirth()); // dateOfBirth là kiểu java.sql.Date
+			session.setAttribute("dateOfBirth", dateOfBirthString);			
+		}
 		RequestDispatcher rd = request.getRequestDispatcher("/views/web/myAccount.jsp");
 		rd.forward(request, response);
 	}
@@ -71,7 +70,7 @@ public class MyAccountController extends HttpServlet {
 		String sqlDate = request.getParameter("dob");
 		java.util.Date utilDate = new java.util.Date();
 		try {
-			utilDate = new SimpleDateFormat("yyyy-mm-dd").parse(sqlDate);
+			utilDate = new SimpleDateFormat("yyyy-MM-dd").parse(sqlDate);
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -89,7 +88,8 @@ public class MyAccountController extends HttpServlet {
 		account.setGender(gender);
 		account.setDateOfBirth(dateOfBirth); 
 		accountService.updateAccount(account);
-		
+		session.setAttribute("currentAccount", account);
+
 		// Kiểm tra
 //		Account checked = accountService.getAccountById(accountId);
 //		if(checked != null && !checked.equals(account)) {
@@ -99,9 +99,9 @@ public class MyAccountController extends HttpServlet {
 //			//không thành công
 //			request.setAttribute("message", "Cập nhật thông tin không thành công");
 //		}
-		RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("/views/web/myAccount.jsp");
 		rd.forward(request, response);
-		response.sendRedirect("web-home");
+		response.sendRedirect("my-account");
 		
 	}
 

@@ -24,7 +24,7 @@ public class OrderDAO extends AbstractDAO implements IOrderDAO {
 	@Override
 	public List<Order> getAllOrder() {
 		List<Order> results = new ArrayList<>();
-		String sql = "select * from orderclothes ";
+		String sql = "select * from orderclothes order by order_id desc ";
 		Order order = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;
@@ -238,11 +238,12 @@ public class OrderDAO extends AbstractDAO implements IOrderDAO {
 				}
 				statement1.close();
 				resultset1.close();
-				String sql3 = "update product set quantity = quantity - ? where product_id=?";
+				String sql3 = "update product set quantity = quantity - ?, purchases = purchases + ? where product_id=?";
 				PreparedStatement statement3 = connection.prepareStatement(sql3);
 				for(Item i:cart.getItems()) {
 					statement3.setInt(1, i.getQuantity());
-					statement3.setInt(2, i.getProduct().getProduct_id());
+					statement3.setInt(2, i.getQuantity());
+					statement3.setInt(3, i.getProduct().getProduct_id());
 					statement3.executeUpdate();
 				}
 				statement3.close();
@@ -276,7 +277,7 @@ public class OrderDAO extends AbstractDAO implements IOrderDAO {
 	@Override
 	public List<Order> getAllOrderByAccountId(int accountId) {
 		List<Order> results = new ArrayList<>();
-		String sql = "select * from orderclothes where account_id=? ";
+		String sql = "select * from orderclothes where account_id=? order by order_id desc ";
 		Order order = null;
 		PreparedStatement statement = null;
 		ResultSet resultSet = null;

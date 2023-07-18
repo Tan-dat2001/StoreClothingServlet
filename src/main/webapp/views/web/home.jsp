@@ -29,7 +29,7 @@
 					<div class="row">
 						<div class="col-md-12">
 							<h1 class="m-b-20">
-								<strong>Welcome To <br> D&L Clothing
+								<strong>Welcome To <br> D&L STORE
 								</strong>
 							</h1>
 							<!-- <p class="m-b-40">See how your users experience your website in realtime or view <br> trends
@@ -143,9 +143,9 @@
 						<div class="col-lg-3 col-md-6 special-grid ">
 							<div class="products-single fix">
 								<div class="box-img-hover box-img-hover-custom">
-									<div class="type-lb">
+									<!-- <div class="type-lb">
 										<p class="sale">Sale</p>
-									</div>
+									</div> -->
 									<img src="${i.productImage}" class="img-fluid" alt="Image"
 										style="height: 240px; width: 255px;">
 									<div class="mask-icon">

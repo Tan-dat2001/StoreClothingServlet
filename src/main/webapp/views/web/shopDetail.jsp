@@ -102,13 +102,13 @@
                                         	<div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                             <div class="products-single fix">
                                                 <div class="box-img-hover">
-                                                    <div class="type-lb">
+                                                    <!-- <div class="type-lb">
                                                         <p class="sale">Sale</p>
-                                                    </div>
+                                                    </div> -->
                                                     <img  src="${i.productImage}" class="img-fluid image-product" alt="Image">
                                                     <div class="mask-icon">
                                                         <ul>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="right" title="Xem"><i class="fas fa-eye"></i></a></li>
+                                                            <li><a href="product-detail?productId=${i.product_id}" data-toggle="tooltip" data-placement="right" title="Xem"><i class="fas fa-eye"></i></a></li>
                                                         </ul>
                                                         <a class="cart" href="addtocart?productId=${i.product_id}&quantity=1">Thêm vào giỏ hàng</a>
                                                     </div>

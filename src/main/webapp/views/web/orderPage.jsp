@@ -24,7 +24,7 @@
 				<div class="module-inner">
 					<div class="side-bar">
 						<div class="user-info">
-							<ul class="meta list list-unstyled">
+							<ul class="meta list list-unstyled" style="color:#000000; font-weight: 700;">
 								<li class="name" style="color: #000">${name} <label
 									class="label label-info">${email}</label>
 								</li>
@@ -32,11 +32,11 @@
 						</div>
 						<nav class="side-menu" >
 							<ul class="nav">
-								<li class="active"><a href="my-account"><span
+								<li class="active"><a href="my-account" class="text-dark"><span
 										class="fa fa-user"></span> Hồ sơ</a></li>
-								<li><a href="order-page"><span
+								<li><a href="order-page" class="text-dark"><span
 										class="fa fa-credit-card"></span> Đơn mua</a></li>
-								<li><a href="change-password"><i class="fa fa-key"
+								<li><a href="change-password" class="text-dark"><i class="fa fa-key"
 										aria-hidden="true"></i> Đổi mật khẩu</a></li>
 							</ul>
 						</nav>
@@ -105,6 +105,7 @@
 			</section>
 		</div>
 	</div>
+	<a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 	<script data-cfasync="false"
 		src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>

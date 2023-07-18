@@ -90,7 +90,7 @@
 					</div>
 				</div>
 
-				<div class="row my-5">
+				<!-- <div class="row my-5">
 					<div class="col-lg-6 col-sm-6">
 						<div class="coupon-box">
 							<div class="input-group input-group-sm">
@@ -101,7 +101,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> -->
 
 
 					<!-- <div class="col-lg-6 col-sm-6">
@@ -109,7 +109,7 @@
                         <input value="Update Cart" type="submit">
                     </div>
                 </div>  -->
-				</div>
+				<!-- </div> -->
 
 				<div class="row my-5">
 					<div class="col-lg-8 col-sm-12"></div>

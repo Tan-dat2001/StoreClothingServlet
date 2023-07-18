@@ -66,7 +66,7 @@
  --%>
                         <h5><del>${productDetail.productPrice * 1.2}</del> ${productDetail.productPrice}</h5>
                         
-                        <p class="available-stock"><span> Kho: ${productDetail.quantity} / <a href="#">Đã bán: 78 </a></span></p>            
+                        <p class="available-stock"><span> Kho: ${productDetail.quantity} / <a href="#">Đã bán: ${productDetail.purchases} </a></span></p>            
                         <h4>Thông tin sản phẩm:</h4>
                         <p><${productDetail.productDesc}</p>
                         <ul>

@@ -44,6 +44,8 @@ public class LoginController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 //		AccountDAO accountDAO = new AccountDAO();
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String email = request.getParameter("txtemail");
 		System.out.println("xuat email" + email);

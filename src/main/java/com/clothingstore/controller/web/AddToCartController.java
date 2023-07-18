@@ -61,9 +61,10 @@ public class AddToCartController extends HttpServlet {
 			session.setAttribute("listItem", list);
 			session.setAttribute("cart", cart);
 			session.setAttribute("size", list.size()); // .size để lấy số lượng có trong cart
-//			RequestDispatcher rd = request.getRequestDispatcher("web-home");
-			RequestDispatcher rd = request.getRequestDispatcher("/views/web/cart.jsp");
+//			RequestDispatcher rd = request.getRequestDispatcher("/views/web/cart.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/views/web/home.jsp");
 			rd.forward(request, response);
+			response.sendRedirect("web-home");
 		}else {
 			response.sendRedirect("log-in");
 		}

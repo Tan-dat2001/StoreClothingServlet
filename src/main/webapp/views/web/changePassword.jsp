@@ -21,7 +21,7 @@
                 <div class="module-inner">
                     <div class="side-bar">
                         <div class="user-info">
-                            <ul class="meta list list-unstyled">
+                            <ul class="meta list list-unstyled " style="color:#000000; font-weight: 700;">
                                 <li class="name">${name}
                                     <label class="label label-info">${email}</label>
                                 </li>
@@ -29,9 +29,9 @@
                         </div>
                         <nav class="side-menu">
                             <ul class="nav">
-                                <li class="active"><a href="my-account"><span class="fa fa-user"></span> Hồ sơ</a></li>
-                                <li><a href="order-page"><span class="fa fa-credit-card"></span> Đơn mua</a></li>
-                                <li><a href="#"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a></li>
+                                <li class="active"><a href="my-account" class="text-dark"><span class="fa fa-user"></span> Hồ sơ</a></li>
+                                <li><a href="order-page" class="text-dark"><span class="fa fa-credit-card"></span> Đơn mua</a></li>
+                                <li><a href="#" class="text-dark"><i class="fa fa-key" aria-hidden="true"></i> Đổi mật khẩu</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -39,26 +39,26 @@
                         <form class="form-horizontal" action="change-password" method="post">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                <h4 class="panel-title">Thay đổi mật khẩu</h4>
+                                <h4 class="panel-title" style="font-size: 20px; font-weight: 600; color: #fe6232;">Thay đổi mật khẩu</h4>
                                 </div>
                                 <div class="panel-body">
                                   <div class="form-group">
                                   	<div>${currentPasswordInput}</div>
-                                    <label class="col-sm-2 control-label">Mật khẩu hiện tại</label>
+                                    <!-- <label class="col-sm-2 control-label">Mật khẩu hiện tại</label> -->
                                     <div class="col-sm-10">
-                                      <input type="password" class="form-control" name="currentPass">
+                                      <input type="password" class="form-control" name="currentPass" placeholder="Nhập mật khẩu hiện tại">
                                     </div>
                                   </div>
                                   <div class="form-group">
-                                    <label class="col-sm-2 control-label">Mật khẩu mới</label>
-                                    <div class="col-sm-10">
-                                      <input type="password" class="form-control" name="newPass">
+<!--                                     <label class="col-sm-2 control-label">Mật khẩu mới</label>
+ -->                                    <div class="col-sm-10">
+                                      <input type="password" class="form-control" name="newPass" placeholder="Nhập mật khẩu mới">
                                     </div>
                                   </div>
                                   
                                   <div class="form-group">
                                     <div class="col-sm-10 col-sm-offset-2">
-                                      <button type="submit" class="btn btn-primary">Submit</button>
+                                      <button type="submit" class="btn btn-danger">Submit</button>
                                       <!-- <button type="reset" class="btn btn-default">Cancel</button> -->
                                     </div>
                                   </div>

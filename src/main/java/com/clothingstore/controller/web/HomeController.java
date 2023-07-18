@@ -32,7 +32,8 @@ public class HomeController extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws SecurityException, IOException, ServletException {
-		request.setCharacterEncoding("UTF-8");
+		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 		List<Category> listCategoriesAo = categoryService.getCategoriesByWord("ao");
 		request.setAttribute("listCategoriesAo", listCategoriesAo);
 
